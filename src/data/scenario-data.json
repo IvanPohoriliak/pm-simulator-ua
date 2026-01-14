@@ -1,0 +1,347 @@
+{
+  "projectBrief": {
+    "name": "Subflow",
+    "tagline": "Subscription Analytics Platform",
+    "type": "B2B SaaS (web application)",
+    "context": "Series A startup ($5M raised). Building analytics dashboard for subscription businesses. Two competitors launched similar products last quarter. Investors expect demo-ready MVP in 12 weeks for Series B pitch.",
+    "deadline": "12 weeks (fixed, tied to investor meeting)",
+    "budget": "$100,000 (locked, covers team salaries + infrastructure)",
+    "client": {
+      "name": "David Chen",
+      "role": "CEO & Founder",
+      "description": "Technical background, first-time founder, under board pressure"
+    },
+    "team": [
+      {
+        "name": "Yana",
+        "role": "Senior Backend Developer",
+        "experience": "5 years",
+        "personality": "Pragmatic, sometimes pessimistic"
+      },
+      {
+        "name": "Maksym",
+        "role": "Mid Frontend Developer",
+        "experience": "3 years",
+        "personality": "Eager, optimistic, junior in mindset"
+      },
+      {
+        "name": "Olena",
+        "role": "Product Designer",
+        "experience": "4 years",
+        "personality": "Perfectionist, slow but quality-driven"
+      },
+      {
+        "name": "Andriy",
+        "role": "QA Engineer",
+        "experience": "2 years",
+        "personality": "Detail-oriented, risk-averse"
+      }
+    ],
+    "risk": "Investors expect live demo with real customer data in Week 12. No second chance."
+  },
+  "weeks": [
+    {
+      "weekNumber": 1,
+      "phase": "Requirements & Design",
+      "title": "Everything is Critical",
+      "context": "Monday morning. Kickoff call just ended. David sent a 23-page PRD over the weekend. You opened it Sunday night. It has everything: authentication, dashboard, integrations with Stripe, analytics engine, export to Excel, email notifications, user roles, API access.\n\nThe team is quiet in Slack. Olena asked \"where do we start?\" No one answered yet.\n\nYou have 47 user stories in the backlog. David said \"it's all critical\" three times during the call. Yana privately messaged you: \"This is six months of work, not three.\"",
+      "signals": [
+        {
+          "from": "David Chen (CEO)",
+          "time": "9:15 AM",
+          "avatar": "👔",
+          "message": "Just to confirm — we're starting with the full scope, right? I know it's ambitious but investors need to see the vision."
+        },
+        {
+          "from": "Olena (Designer)",
+          "time": "9:47 AM",
+          "avatar": "🎨",
+          "message": "I need clarity on priorities. If everything is critical, I'll design everything shallow. If we focus, I can go deep on 3-4 flows. Your call."
+        },
+        {
+          "from": "Yana (Backend)",
+          "time": "11:32 AM",
+          "avatar": "⚙️",
+          "message": "(no message)"
+        },
+        {
+          "from": "Maksym (Frontend)",
+          "time": "2:18 PM",
+          "avatar": "💻",
+          "message": "I'm excited! When do we get designs? I can start on login page at least."
+        }
+      ],
+      "situation": "The backlog is overwhelming. The team needs direction. David expects everything. You know \"everything\" means nothing gets done properly. No one has challenged David yet.",
+      "options": [
+        {
+          "id": "A",
+          "title": "Accept full scope",
+          "description": "Tell the team we'll try to deliver everything, start parallel work across all features.",
+          "shortConsequence": "Team will feel trusted but overwhelmed",
+          "consequences": {
+            "immediate": "Team starts working on everything at once. Maksym begins login page. Olena starts designing multiple flows simultaneously. Yana begins database architecture for all features. Everyone is busy, but no one is focused. By Friday, you have 12 things in progress, nothing complete.",
+            "metrics": {
+              "clientTrust": 15,
+              "teamMood": -20,
+              "techDebt": -10,
+              "timelineRisk": -25
+            },
+            "hidden": "Week 4: Yana will tell you half-built features are blocking each other. Week 6: Team burnout begins."
+          }
+        },
+        {
+          "id": "B",
+          "title": "Push back now",
+          "description": "Schedule call with David, present 6-month timeline reality, negotiate scope reduction.",
+          "shortConsequence": "Risk early conflict but gain clarity",
+          "consequences": {
+            "immediate": "David is defensive initially but respects the honesty. You spend 2 days creating realistic timeline. David agrees to cut 40% of scope. Team is relieved and focused. You lose 2 days but gain 3 weeks of focused work.",
+            "metrics": {
+              "clientTrust": -10,
+              "teamMood": 20,
+              "techDebt": 10,
+              "timelineRisk": 15
+            },
+            "hidden": "Week 8: David will second-guess this decision when competitors launch features you cut."
+          }
+        },
+        {
+          "id": "C",
+          "title": "Build \"MVP within MVP\" silently",
+          "description": "Agree publicly, but guide team to focus on core 3 features, keep others as \"in progress.\"",
+          "shortConsequence": "Team gets focus, but David expects everything",
+          "consequences": {
+            "immediate": "You tell team privately to focus on dashboard, Stripe integration, and analytics. Publicly, you keep David updated on \"progress\" across all features. Team has clarity. David stays optimistic. But the gap between expectation and reality is growing.",
+            "metrics": {
+              "clientTrust": 5,
+              "teamMood": 10,
+              "techDebt": 0,
+              "timelineRisk": -15
+            },
+            "hidden": "Week 9: David will discover the gap during board demo. Too late to course-correct strategically."
+          }
+        },
+        {
+          "id": "D",
+          "title": "Request 2-day sprint zero",
+          "description": "Postpone start, do estimation workshop with team, present timeline to David Friday.",
+          "shortConsequence": "Lose 2 days but get realistic plan",
+          "consequences": {
+            "immediate": "Team spends Tuesday-Wednesday estimating properly. You present realistic 18-week timeline to David on Friday. He's shocked but appreciates transparency. You renegotiate: 12-week MVP with phase 2 roadmap. Team feels heard and realistic about timeline.",
+            "metrics": {
+              "clientTrust": 0,
+              "teamMood": 15,
+              "techDebt": 5,
+              "timelineRisk": 10
+            },
+            "hidden": "Week 11: You'll have 1 week buffer. It will save the project when Stripe API breaks."
+          }
+        }
+      ]
+    },
+    {
+      "weekNumber": 2,
+      "phase": "Requirements & Design",
+      "title": "The Design Bottleneck",
+      "context": "You chose your path last week. Olena has been quiet all week. You checked in yesterday. She said she's \"working on design system first — otherwise we'll have inconsistent UI later.\" She's right. But Maksym has been idle for three days. He keeps asking \"when can I start coding?\"\n\nYana started backend architecture. She's not waiting for designs. But frontend is blocked.\n\nIt's Thursday afternoon. David messaged: \"Can I see designs tomorrow?\"",
+      "signals": [
+        {
+          "from": "Olena (Designer)",
+          "time": "10:23 AM",
+          "avatar": "🎨",
+          "message": "I need another week for design system. Buttons, inputs, colors, spacing. Otherwise Maksym will build inconsistent UI and we'll refactor forever."
+        },
+        {
+          "from": "Maksym (Frontend)",
+          "time": "11:45 AM",
+          "avatar": "💻",
+          "message": "I'm literally just sitting here. Can I at least build the login page? I don't need full designs for that."
+        },
+        {
+          "from": "Yana (Backend)",
+          "time": "1:02 PM",
+          "avatar": "⚙️",
+          "message": "Backend structure is ready. I'm moving to Stripe integration. Let me know when frontend is unblocked."
+        },
+        {
+          "from": "David Chen (CEO)",
+          "time": "4:37 PM",
+          "avatar": "👔",
+          "message": "Quick sync tomorrow at 10 AM? Want to see where we are. Investors are asking questions."
+        }
+      ],
+      "situation": "Olena's approach is right long-term, but you're losing velocity. Maksym is frustrated. David wants to see progress. You have a call tomorrow with nothing visual to show.",
+      "options": [
+        {
+          "id": "A",
+          "title": "Support Olena fully",
+          "description": "Tell David design system is foundational, push the sync to next week, protect Olena's timeline.",
+          "shortConsequence": "Right decision, but no visible progress",
+          "consequences": {
+            "immediate": "David is frustrated but trusts you. Olena finishes design system by next week. It's beautiful and consistent. But you've lost 2 weeks of frontend development. Maksym's enthusiasm is fading. The team questions if you can meet the deadline.",
+            "metrics": {
+              "clientTrust": -15,
+              "teamMood": 5,
+              "techDebt": 15,
+              "timelineRisk": -20
+            },
+            "hidden": "Week 10: Perfect UI will impress investors during demo. This investment pays off."
+          }
+        },
+        {
+          "id": "B",
+          "title": "Push Olena to deliver something",
+          "description": "Ask her to skip design system, design 2-3 screens by tomorrow, system can wait.",
+          "shortConsequence": "Short-term progress, long-term inconsistency",
+          "consequences": {
+            "immediate": "Olena works overnight, delivers 3 screen designs. David is happy. Maksym starts coding immediately. But UI components are inconsistent. Week 6: you'll spend 2 weeks refactoring frontend because buttons, spacing, and colors are all different across screens.",
+            "metrics": {
+              "clientTrust": 10,
+              "teamMood": -10,
+              "techDebt": -20,
+              "timelineRisk": 5
+            },
+            "hidden": "Week 6: Refactoring will cost 2 weeks. UI bugs will haunt you until launch."
+          }
+        },
+        {
+          "id": "C",
+          "title": "Unblock Maksym with rough sketches",
+          "description": "Tell Olena to give Maksym low-fi wireframes, he builds basic version, she refines later.",
+          "shortConsequence": "Parallel work, but possible rework",
+          "consequences": {
+            "immediate": "Olena gives Maksym wireframes in 2 hours. He starts building with placeholder styles. Progress visible. Olena continues design system work in parallel. Some rework needed later, but not catastrophic. David sees movement. Team feels productive.",
+            "metrics": {
+              "clientTrust": 5,
+              "teamMood": 10,
+              "techDebt": -10,
+              "timelineRisk": 0
+            },
+            "hidden": "Week 8: You'll spend 1 week on visual refactoring. Not ideal, but manageable."
+          }
+        },
+        {
+          "id": "D",
+          "title": "Show David backend progress",
+          "description": "Skip design demo, show him API architecture, database schema, technical foundation.",
+          "shortConsequence": "He might not understand it",
+          "consequences": {
+            "immediate": "David joins call. You screenshare database diagrams and API documentation. He nods politely but looks confused. After the call, he messages his co-founder: \"Not sure they're making real progress.\" His trust drops. Team doesn't feel validated.",
+            "metrics": {
+              "clientTrust": -20,
+              "teamMood": -5,
+              "techDebt": 5,
+              "timelineRisk": -5
+            },
+            "hidden": "Week 7: David will micromanage more after this. Extra meetings, status updates."
+          }
+        }
+      ]
+    },
+    {
+      "weekNumber": 3,
+      "phase": "Requirements & Design",
+      "title": "The Surprise Feature",
+      "context": "You made your choice on the design bottleneck. Things are moving now. Maksym is coding. Yana is deep in Stripe integration. Andriy is writing test plans.\n\nFriday morning. You're reviewing sprint progress. Feeling cautiously optimistic.\n\nThen David posts in team channel. Not a DM. Public message. \"Talked to potential customer yesterday. They need CSV import for historical data. Without it, they can't migrate from current tool. This is a dealbreaker.\"\n\nThe room goes cold. CSV import wasn't in the original scope. Yana responds immediately: \"That's 2-3 weeks of work. Parsing, validation, error handling, UI for upload.\"\n\nDavid replies: \"But it's just reading a file, right?\"",
+      "signals": [
+        {
+          "from": "David Chen (CEO)",
+          "time": "9:18 AM",
+          "avatar": "👔",
+          "message": "I know we didn't plan this, but customer feedback is gold. We can't lose our first pilot user because of a missing feature."
+        },
+        {
+          "from": "Yana (Backend)",
+          "time": "9:21 AM",
+          "avatar": "⚙️",
+          "message": "CSV parsing is complex. Bad data, different formats, special characters. Then validation, rollback if it fails. Not a simple feature."
+        },
+        {
+          "from": "Maksym (Frontend)",
+          "time": "9:35 AM",
+          "avatar": "💻",
+          "message": "I can build the upload UI in a day. But backend processing is Yana's call."
+        },
+        {
+          "from": "Olena (Designer)",
+          "time": "10:12 AM",
+          "avatar": "🎨",
+          "message": "Do we have designs for error states? Upload progress? File format requirements screen? This needs UX work."
+        }
+      ],
+      "situation": "David just added 2-3 weeks of work publicly. Team is waiting for your response. He framed it as \"customer need\" so it's hard to refuse. But you have 9 weeks left and already tight scope.",
+      "options": [
+        {
+          "id": "A",
+          "title": "Accept it, adjust timeline",
+          "description": "Tell David yes, but push back the deadline OR cut other features. Make trade-off explicit.",
+          "shortConsequence": "He might refuse, but it's honest",
+          "consequences": {
+            "immediate": "You schedule 1-on-1 with David. Present two options: push demo to Week 14, or cut user management feature. He's uncomfortable but chooses to cut user management. Team appreciates your backbone. Client relationship stays strong. But you'll demo without user roles.",
+            "metrics": {
+              "clientTrust": 10,
+              "teamMood": 15,
+              "techDebt": -5,
+              "timelineRisk": 0
+            },
+            "hidden": "Week 12 demo: Investor will ask 'Where's user management?' David will have to explain."
+          }
+        },
+        {
+          "id": "B",
+          "title": "Say yes, absorb it somehow",
+          "description": "Tell team to \"make it work,\" hope for overtime or shortcuts.",
+          "shortConsequence": "Team will burn out or quality drops",
+          "consequences": {
+            "immediate": "Team works overtime. CSV import gets built in 10 days through nights and weekends. Feature works but code quality is poor. Maksym burns out by Week 7. Yana is resentful. Tech debt accumulates. The feature is fragile and will break during demo.",
+            "metrics": {
+              "clientTrust": 15,
+              "teamMood": -25,
+              "techDebt": -30,
+              "timelineRisk": -20
+            },
+            "hidden": "Week 7: Maksym will need week off. Week 9: CSV import will crash during board demo."
+          }
+        },
+        {
+          "id": "C",
+          "title": "Negotiate MVP version",
+          "description": "Propose: support only one CSV format, no validation UI, manual error handling for pilot.",
+          "shortConsequence": "Technical debt, but faster",
+          "consequences": {
+            "immediate": "David agrees to \"basic version.\" Yana builds it in 5 days — one format, minimal validation, no error UI. Customer can use it but it's fragile. Tech debt created but timeline protected. Team feels you found middle ground. Feature exists but isn't production-ready.",
+            "metrics": {
+              "clientTrust": 5,
+              "teamMood": 5,
+              "techDebt": -15,
+              "timelineRisk": -5
+            },
+            "hidden": "Week 8: CSV import will cause integration bugs. Week 12: Still unstable at demo."
+          }
+        },
+        {
+          "id": "D",
+          "title": "Challenge the customer need",
+          "description": "Ask David: is this pilot user committed? Or \"interested\"? Can they start without import?",
+          "shortConsequence": "Might seem like you're blocking sales",
+          "consequences": {
+            "immediate": "David admits customer is \"very interested\" but not committed yet. You propose: launch without CSV, add it in Phase 2 if they convert. David reluctantly agrees. Team relieved. But 2 weeks later, customer goes with competitor who has CSV import. David loses faith in your judgment.",
+            "metrics": {
+              "clientTrust": -25,
+              "teamMood": 10,
+              "techDebt": 5,
+              "timelineRisk": 10
+            },
+            "hidden": "Week 6: David will override your decisions more. Micromanagement increases."
+          }
+        }
+      ]
+    }
+  ],
+  "finalReview": {
+    "outcomeTitle": "The Demo Succeeded. But...",
+    "outcomeText": "The MVP launched. The demo worked. Series B funding secured.\n\nBut the product you showed wasn't the product in production. You demonstrated core flows under controlled conditions. Investors saw potential, not reality.\n\nThe team delivered the impossible. They worked nights. They skipped quality steps. They built workarounds instead of solutions. They said yes when they meant \"maybe if we're lucky.\"\n\nThe hidden cost: technical debt that will take 3 months to unwind. A team that trusts you but is exhausted. A codebase that works but nobody fully understands anymore. A founder who thinks you can do this again, faster.",
+    "reflectionTitle": "This is Project Management",
+    "reflectionText": "Not the conference talk version. The real one.\n\nYou didn't fail. But you didn't win cleanly either.\n\nYou made twelve decisions. Most were reasonable in isolation. But decisions compound. Each trade-off borrowed from the future. Each \"yes\" to speed was a \"no\" to stability.\n\nThe team doesn't blame you. They delivered what you asked. They trust you. But trust is a resource too. And you've spent it.\n\nNext phase starts Monday. David expects acceleration. The team expects rest. The codebase expects refactoring. You can't give everyone what they need.\n\nAnd that's the truth nobody puts in the retrospective."
+  }
+}
