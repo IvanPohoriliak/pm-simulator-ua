@@ -1,9 +1,9 @@
 {
   "projectBrief": {
     "name": "Subflow",
-    "tagline": "Subscription Analytics Platform",
+    "tagline": "Платформа аналітики підписок",
     "type": "B2B SaaS (web application)",
-    "context": "Series A startup ($5M raised). Building analytics dashboard for subscription businesses. Two competitors launched similar products last quarter. Investors expect demo-ready MVP in 12 weeks for Series B pitch.",
+    "context": "Subflow — це B2B SaaS-додаток, який допомагає компаніям відстежувати, аналізувати та оптимізувати свої підписки. Стартап отримав початкове фінансування та має амбітну мету запуску MVP за 12 тижнів для захоплення раннього ринку.",
     "deadline": "12 weeks (fixed, tied to investor meeting)",
     "budget": "$100,000 (locked, covers team salaries + infrastructure)",
     "client": {
@@ -13,128 +13,101 @@
     },
     "team": [
       {
-        "name": "Yana",
-        "role": "Senior Backend Developer",
-        "experience": "5 years",
-        "personality": "Pragmatic, sometimes pessimistic"
+        "name": "Яна",
+        "role": "Дизайнерка",
+        "trait": "Перфекціоністка, захисниця користувачів"
       },
       {
-        "name": "Maksym",
-        "role": "Mid Frontend Developer",
-        "experience": "3 years",
-        "personality": "Eager, optimistic, junior in mindset"
+        "name": "Максим",
+        "role": "Backend-розробник",
+        "trait": "Технічно сильний, але схильний до надмірної інженерії"
       },
       {
-        "name": "Olena",
-        "role": "Product Designer",
-        "experience": "4 years",
-        "personality": "Perfectionist, slow but quality-driven"
+        "name": "Олена",
+        "role": "Frontend-розробниця",
+        "trait": "Швидка, але буває пропускає деталі"
       },
       {
-        "name": "Andriy",
-        "role": "QA Engineer",
-        "experience": "2 years",
-        "personality": "Detail-oriented, risk-averse"
+        "name": "Андрій",
+        "role": "Засновник/CEO",
+        "trait": "Візіонер з постійними ідеями про нові фічі"
       }
     ],
-    "risk": "Investors expect live demo with real customer data in Week 12. No second chance."
+    "risk": "Investors expect live demo with real customer data in Week 12. No second chance.",
+    "keyRisks": [
+      "Агресивний дедлайн з можливістю scope creep",
+      "Перша спільна робота команди",
+      "Обмежений бюджет — перевитрата означає відсутність Series A"
+    ],
+    "yourChallenge": "Керувати командою через 12-тижневий шлях до MVP, балансуючи якість, швидкість та задоволеність команди. Кожне твоє рішення впливає на довіру клієнта, настрій команди, технічний борг та ризик таймлайну."
   },
   "weeks": [
     {
       "weekNumber": 1,
       "phase": "Requirements & Design",
-      "title": "Everything is Critical",
-      "context": "Monday morning. Kickoff call just ended. David sent a 23-page PRD over the weekend. You opened it Sunday night. It has everything: authentication, dashboard, integrations with Stripe, analytics engine, export to Excel, email notifications, user roles, API access.\n\nThe team is quiet in Slack. Olena asked \"where do we start?\" No one answered yet.\n\nYou have 47 user stories in the backlog. David said \"it's all critical\" three times during the call. Yana privately messaged you: \"This is six months of work, not three.\"",
+      "title": "Все критично",
+      "context": "Перший тиждень, і вже виникла проблема. Андрій (CEO) надіслав список з 47 фіч для MVP. Яна (дизайнерка) налаштована скептично. Максим та Олена (розробники) виглядають переляканими.",
       "signals": [
         {
-          "from": "David Chen (CEO)",
-          "time": "9:15 AM",
-          "avatar": "👔",
-          "message": "Just to confirm — we're starting with the full scope, right? I know it's ambitious but investors need to see the vision."
+          "person": "Андрій",
+          "message": "@всі Ось список must-have фіч для MVP! Я знаю, що це багато, але всі вони критичні для наших ранніх клієнтів.",
+          "sentiment": "excited"
         },
         {
-          "from": "Olena (Designer)",
-          "time": "9:47 AM",
-          "avatar": "🎨",
-          "message": "I need clarity on priorities. If everything is critical, I'll design everything shallow. If we focus, I can go deep on 3-4 flows. Your call."
+          "person": "Яна",
+          "message": "47 фіч за 12 тижнів? Нам потрібен чіткий пріоритет, щоб створити щось використовуване.",
+          "sentiment": "concerned"
         },
         {
-          "from": "Yana (Backend)",
-          "time": "11:32 AM",
-          "avatar": "⚙️",
-          "message": "(no message)"
-        },
-        {
-          "from": "Maksym (Frontend)",
-          "time": "2:18 PM",
-          "avatar": "💻",
-          "message": "I'm excited! When do we get designs? I can start on login page at least."
+          "person": "Максим",
+          "message": "Деякі з цих фіч потребують складних інтеграцій. Потрібно реально оцінити, що можливо.",
+          "sentiment": "worried"
         }
       ],
       "situation": "The backlog is overwhelming. The team needs direction. David expects everything. You know \"everything\" means nothing gets done properly. No one has challenged David yet.",
       "options": [
         {
           "id": "A",
-          "title": "Accept full scope",
-          "description": "Tell the team we'll try to deliver everything, start parallel work across all features.",
-          "shortConsequence": "Team will feel trusted but overwhelmed",
-          "consequences": {
-            "immediate": "Team starts working on everything at once. Maksym begins login page. Olena starts designing multiple flows simultaneously. Yana begins database architecture for all features. Everyone is busy, but no one is focused. By Friday, you have 12 things in progress, nothing complete.",
-            "metrics": {
-              "clientTrust": 15,
-              "teamMood": -20,
-              "techDebt": -10,
-              "timelineRisk": -25
-            },
-            "hidden": "Week 4: Yana will tell you half-built features are blocking each other. Week 6: Team burnout begins."
+          "text": "Погодитися з усіма 47 фічами, щоб зробити Андрія щасливим",
+          "consequence": "Андрій в захваті, але команда відчуває себе приреченою. Ніхто не вірить, що це реально.",
+          "metrics": {
+            "clientTrust": 5,
+            "teamMood": -15,
+            "techDebt": 10,
+            "timelineRisk": 20
           }
         },
         {
           "id": "B",
-          "title": "Push back now",
-          "description": "Schedule call with David, present 6-month timeline reality, negotiate scope reduction.",
-          "shortConsequence": "Risk early conflict but gain clarity",
-          "consequences": {
-            "immediate": "David is defensive initially but respects the honesty. You spend 2 days creating realistic timeline. David agrees to cut 40% of scope. Team is relieved and focused. You lose 2 days but gain 3 weeks of focused work.",
-            "metrics": {
-              "clientTrust": -10,
-              "teamMood": 20,
-              "techDebt": 10,
-              "timelineRisk": 15
-            },
-            "hidden": "Week 8: David will second-guess this decision when competitors launch features you cut."
+          "text": "Провести воркшоп з пріоритизації, використовуючи MoSCoW або подібну техніку",
+          "consequence": "Команда співпрацює над реалістичним скоупом. Андрій розчарований, але розуміє обґрунтування.",
+          "metrics": {
+            "clientTrust": -5,
+            "teamMood": 10,
+            "techDebt": -5,
+            "timelineRisk": -10
           }
         },
         {
           "id": "C",
-          "title": "Build \"MVP within MVP\" silently",
-          "description": "Agree publicly, but guide team to focus on core 3 features, keep others as \"in progress.\"",
-          "shortConsequence": "Team gets focus, but David expects everything",
-          "consequences": {
-            "immediate": "You tell team privately to focus on dashboard, Stripe integration, and analytics. Publicly, you keep David updated on \"progress\" across all features. Team has clarity. David stays optimistic. But the gap between expectation and reality is growing.",
-            "metrics": {
-              "clientTrust": 5,
-              "teamMood": 10,
-              "techDebt": 0,
-              "timelineRisk": -15
-            },
-            "hidden": "Week 9: David will discover the gap during board demo. Too late to course-correct strategically."
+          "text": "Вибрати топ-10 фіч на власний розсуд і представити як \"Фаза 1\"",
+          "consequence": "Швидке рішення, але Андрій відчуває себе виключеним. Команда невпевнена в пріоритетах.",
+          "metrics": {
+            "clientTrust": -10,
+            "teamMood": 0,
+            "techDebt": 0,
+            "timelineRisk": -5
           }
         },
         {
           "id": "D",
-          "title": "Request 2-day sprint zero",
-          "description": "Postpone start, do estimation workshop with team, present timeline to David Friday.",
-          "shortConsequence": "Lose 2 days but get realistic plan",
-          "consequences": {
-            "immediate": "Team spends Tuesday-Wednesday estimating properly. You present realistic 18-week timeline to David on Friday. He's shocked but appreciates transparency. You renegotiate: 12-week MVP with phase 2 roadmap. Team feels heard and realistic about timeline.",
-            "metrics": {
-              "clientTrust": 0,
-              "teamMood": 15,
-              "techDebt": 5,
-              "timelineRisk": 10
-            },
-            "hidden": "Week 11: You'll have 1 week buffer. It will save the project when Stripe API breaks."
+          "text": "Попросити Андрія ранжувати фічі, потім провести сесію оцінки команди",
+          "consequence": "Збалансований підхід. Андрій залучений, команда має голос. Потребує часу, але будує вирівнювання.",
+          "metrics": {
+            "clientTrust": 0,
+            "teamMood": 5,
+            "techDebt": -5,
+            "timelineRisk": -5
           }
         }
       ]
@@ -142,98 +115,69 @@
     {
       "weekNumber": 2,
       "phase": "Requirements & Design",
-      "title": "The Design Bottleneck",
-      "context": "You chose your path last week. Olena has been quiet all week. You checked in yesterday. She said she's \"working on design system first — otherwise we'll have inconsistent UI later.\" She's right. But Maksym has been idle for three days. He keeps asking \"when can I start coding?\"\n\nYana started backend architecture. She's not waiting for designs. But frontend is blocked.\n\nIt's Thursday afternoon. David messaged: \"Can I see designs tomorrow?\"",
+      "title": "Вузьке місце дизайну",
+      "context": "Яна витратила весь тиждень на удосконалення однієї UI-компоненти. Її робота бездоганна, але розробники чекають на вайрфрейми для інших екранів. Перший спринт під загрозою.",
       "signals": [
         {
-          "from": "Olena (Designer)",
-          "time": "10:23 AM",
-          "avatar": "🎨",
-          "message": "I need another week for design system. Buttons, inputs, colors, spacing. Otherwise Maksym will build inconsistent UI and we'll refactor forever."
+          "person": "Олена",
+          "message": "Мені потрібні дизайни для сторінки налаштувань, щоб триматися графіка. @Яна коли вони будуть готові?",
+          "sentiment": "impatient"
         },
         {
-          "from": "Maksym (Frontend)",
-          "time": "11:45 AM",
-          "avatar": "💻",
-          "message": "I'm literally just sitting here. Can I at least build the login page? I don't need full designs for that."
+          "person": "Яна",
+          "message": "Працюю над досконалістю дашборду. Цей екран — те, що побачать інвестори. Потрібен час, щоб зробити правильно.",
+          "sentiment": "defensive"
         },
         {
-          "from": "Yana (Backend)",
-          "time": "1:02 PM",
-          "avatar": "⚙️",
-          "message": "Backend structure is ready. I'm moving to Stripe integration. Let me know when frontend is unblocked."
-        },
-        {
-          "from": "David Chen (CEO)",
-          "time": "4:37 PM",
-          "avatar": "👔",
-          "message": "Quick sync tomorrow at 10 AM? Want to see where we are. Investors are asking questions."
+          "person": "Максим",
+          "message": "Можу почати з бекенду, але було б добре мати повну картину дизайну скоро.",
+          "sentiment": "neutral"
         }
       ],
       "situation": "Olena's approach is right long-term, but you're losing velocity. Maksym is frustrated. David wants to see progress. You have a call tomorrow with nothing visual to show.",
       "options": [
         {
           "id": "A",
-          "title": "Support Olena fully",
-          "description": "Tell David design system is foundational, push the sync to next week, protect Olena's timeline.",
-          "shortConsequence": "Right decision, but no visible progress",
-          "consequences": {
-            "immediate": "David is frustrated but trusts you. Olena finishes design system by next week. It's beautiful and consistent. But you've lost 2 weeks of frontend development. Maksym's enthusiasm is fading. The team questions if you can meet the deadline.",
-            "metrics": {
-              "clientTrust": -15,
-              "teamMood": 5,
-              "techDebt": 15,
-              "timelineRisk": -20
-            },
-            "hidden": "Week 10: Perfect UI will impress investors during demo. This investment pays off."
+          "text": "Дати Яні ще тиждень — якість важливіша за швидкість на цьому етапі",
+          "consequence": "Дизайн виходить чудовим, але розробка затримується. Перший спринт провалено.",
+          "metrics": {
+            "clientTrust": 0,
+            "teamMood": -5,
+            "techDebt": 5,
+            "timelineRisk": 10
           }
         },
         {
           "id": "B",
-          "title": "Push Olena to deliver something",
-          "description": "Ask her to skip design system, design 2-3 screens by tomorrow, system can wait.",
-          "shortConsequence": "Short-term progress, long-term inconsistency",
-          "consequences": {
-            "immediate": "Olena works overnight, delivers 3 screen designs. David is happy. Maksym starts coding immediately. But UI components are inconsistent. Week 6: you'll spend 2 weeks refactoring frontend because buttons, spacing, and colors are all different across screens.",
-            "metrics": {
-              "clientTrust": 10,
-              "teamMood": -10,
-              "techDebt": -20,
-              "timelineRisk": 5
-            },
-            "hidden": "Week 6: Refactoring will cost 2 weeks. UI bugs will haunt you until launch."
+          "text": "Попросити Яну перейти на швидші, менш відшліфовані дизайни для прогресу",
+          "consequence": "Яна відчуває, що її не цінують. Дизайни \"достатньо хороші\" але не чудові.",
+          "metrics": {
+            "clientTrust": 0,
+            "teamMood": -10,
+            "techDebt": 0,
+            "timelineRisk": -5
           }
         },
         {
           "id": "C",
-          "title": "Unblock Maksym with rough sketches",
-          "description": "Tell Olena to give Maksym low-fi wireframes, he builds basic version, she refines later.",
-          "shortConsequence": "Parallel work, but possible rework",
-          "consequences": {
-            "immediate": "Olena gives Maksym wireframes in 2 hours. He starts building with placeholder styles. Progress visible. Olena continues design system work in parallel. Some rework needed later, but not catastrophic. David sees movement. Team feels productive.",
-            "metrics": {
-              "clientTrust": 5,
-              "teamMood": 10,
-              "techDebt": -10,
-              "timelineRisk": 0
-            },
-            "hidden": "Week 8: You'll spend 1 week on visual refactoring. Not ideal, but manageable."
+          "text": "Впровадити дизайн-спринти з таймбоксами для кожної компоненти",
+          "consequence": "Структура допомагає, але Яна відчуває поспіх. Баланс швидкості та якості.",
+          "metrics": {
+            "clientTrust": 0,
+            "teamMood": 0,
+            "techDebt": 0,
+            "timelineRisk": -5
           }
         },
         {
           "id": "D",
-          "title": "Show David backend progress",
-          "description": "Skip design demo, show him API architecture, database schema, technical foundation.",
-          "shortConsequence": "He might not understand it",
-          "consequences": {
-            "immediate": "David joins call. You screenshare database diagrams and API documentation. He nods politely but looks confused. After the call, he messages his co-founder: \"Not sure they're making real progress.\" His trust drops. Team doesn't feel validated.",
-            "metrics": {
-              "clientTrust": -20,
-              "teamMood": -5,
-              "techDebt": 5,
-              "timelineRisk": -5
-            },
-            "hidden": "Week 7: David will micromanage more after this. Extra meetings, status updates."
+          "text": "Обговорити з Яною, що \"досконалість — ворог готового\" та узгодити пріоритети",
+          "consequence": "Яна розуміє компроміс. Узгоджує реалістичний графік із \"достатньо хорошими\" дизайнами.",
+          "metrics": {
+            "clientTrust": 0,
+            "teamMood": 5,
+            "techDebt": 0,
+            "timelineRisk": -10
           }
         }
       ]
@@ -241,98 +185,69 @@
     {
       "weekNumber": 3,
       "phase": "Requirements & Design",
-      "title": "The Surprise Feature",
-      "context": "You made your choice on the design bottleneck. Things are moving now. Maksym is coding. Yana is deep in Stripe integration. Andriy is writing test plans.\n\nFriday morning. You're reviewing sprint progress. Feeling cautiously optimistic.\n\nThen David posts in team channel. Not a DM. Public message. \"Talked to potential customer yesterday. They need CSV import for historical data. Without it, they can't migrate from current tool. This is a dealbreaker.\"\n\nThe room goes cold. CSV import wasn't in the original scope. Yana responds immediately: \"That's 2-3 weeks of work. Parsing, validation, error handling, UI for upload.\"\n\nDavid replies: \"But it's just reading a file, right?\"",
+      "title": "Несподівана фіча",
+      "context": "Андрій повернувся з конференції, надихнутий конкурентом. Хоче додати AI-рекомендації до нашого MVP. Команда вже завантажена узгодженим скоупом.",
       "signals": [
         {
-          "from": "David Chen (CEO)",
-          "time": "9:18 AM",
-          "avatar": "👔",
-          "message": "I know we didn't plan this, but customer feedback is gold. We can't lose our first pilot user because of a missing feature."
+          "person": "Андрій",
+          "message": "Тільки що бачив демо конкурента з AI-підказками. Це game changer! Нам ПОТРІБНО це в MVP.",
+          "sentiment": "excited"
         },
         {
-          "from": "Yana (Backend)",
-          "time": "9:21 AM",
-          "avatar": "⚙️",
-          "message": "CSV parsing is complex. Bad data, different formats, special characters. Then validation, rollback if it fails. Not a simple feature."
+          "person": "Максим",
+          "message": "AI-інтеграція не тривіальна. Це додасть тижні до розробки, плюс треба вибрати та налаштувати модель.",
+          "sentiment": "stressed"
         },
         {
-          "from": "Maksym (Frontend)",
-          "time": "9:35 AM",
-          "avatar": "💻",
-          "message": "I can build the upload UI in a day. But backend processing is Yana's call."
-        },
-        {
-          "from": "Olena (Designer)",
-          "time": "10:12 AM",
-          "avatar": "🎨",
-          "message": "Do we have designs for error states? Upload progress? File format requirements screen? This needs UX work."
+          "person": "Яна",
+          "message": "Ми ще не розібралися з основними UX флоу. Додавання AI зараз ускладнить все.",
+          "sentiment": "frustrated"
         }
       ],
       "situation": "David just added 2-3 weeks of work publicly. Team is waiting for your response. He framed it as \"customer need\" so it's hard to refuse. But you have 9 weeks left and already tight scope.",
       "options": [
         {
           "id": "A",
-          "title": "Accept it, adjust timeline",
-          "description": "Tell David yes, but push back the deadline OR cut other features. Make trade-off explicit.",
-          "shortConsequence": "He might refuse, but it's honest",
-          "consequences": {
-            "immediate": "You schedule 1-on-1 with David. Present two options: push demo to Week 14, or cut user management feature. He's uncomfortable but chooses to cut user management. Team appreciates your backbone. Client relationship stays strong. But you'll demo without user roles.",
-            "metrics": {
-              "clientTrust": 10,
-              "teamMood": 15,
-              "techDebt": -5,
-              "timelineRisk": 0
-            },
-            "hidden": "Week 12 demo: Investor will ask 'Where's user management?' David will have to explain."
+          "text": "Погодитися на AI-фічу — Андрій як CEO знає ринок краще",
+          "consequence": "Скоуп розширюється. Команда перевантажена, але Андрій вдоволений.",
+          "metrics": {
+            "clientTrust": 10,
+            "teamMood": -15,
+            "techDebt": 15,
+            "timelineRisk": 20
           }
         },
         {
           "id": "B",
-          "title": "Say yes, absorb it somehow",
-          "description": "Tell team to \"make it work,\" hope for overtime or shortcuts.",
-          "shortConsequence": "Team will burn out or quality drops",
-          "consequences": {
-            "immediate": "Team works overtime. CSV import gets built in 10 days through nights and weekends. Feature works but code quality is poor. Maksym burns out by Week 7. Yana is resentful. Tech debt accumulates. The feature is fragile and will break during demo.",
-            "metrics": {
-              "clientTrust": 15,
-              "teamMood": -25,
-              "techDebt": -30,
-              "timelineRisk": -20
-            },
-            "hidden": "Week 7: Maksym will need week off. Week 9: CSV import will crash during board demo."
+          "text": "Відмовити та захистити початковий скоуп",
+          "consequence": "Команда полегшена, але Андрій відчуває, що його не чують. Напруга зростає.",
+          "metrics": {
+            "clientTrust": -15,
+            "teamMood": 10,
+            "techDebt": 0,
+            "timelineRisk": 0
           }
         },
         {
           "id": "C",
-          "title": "Negotiate MVP version",
-          "description": "Propose: support only one CSV format, no validation UI, manual error handling for pilot.",
-          "shortConsequence": "Technical debt, but faster",
-          "consequences": {
-            "immediate": "David agrees to \"basic version.\" Yana builds it in 5 days — one format, minimal validation, no error UI. Customer can use it but it's fragile. Tech debt created but timeline protected. Team feels you found middle ground. Feature exists but isn't production-ready.",
-            "metrics": {
-              "clientTrust": 5,
-              "teamMood": 5,
-              "techDebt": -15,
-              "timelineRisk": -5
-            },
-            "hidden": "Week 8: CSV import will cause integration bugs. Week 12: Still unstable at demo."
+          "text": "Запропонувати додати AI після MVP як \"Фазу 2\" фічу",
+          "consequence": "Компроміс, який дає команді простір для подиху. Андрій не в захваті, але погоджується.",
+          "metrics": {
+            "clientTrust": -5,
+            "teamMood": 5,
+            "techDebt": 0,
+            "timelineRisk": 0
           }
         },
         {
           "id": "D",
-          "title": "Challenge the customer need",
-          "description": "Ask David: is this pilot user committed? Or \"interested\"? Can they start without import?",
-          "shortConsequence": "Might seem like you're blocking sales",
-          "consequences": {
-            "immediate": "David admits customer is \"very interested\" but not committed yet. You propose: launch without CSV, add it in Phase 2 if they convert. David reluctantly agrees. Team relieved. But 2 weeks later, customer goes with competitor who has CSV import. David loses faith in your judgment.",
-            "metrics": {
-              "clientTrust": -25,
-              "teamMood": 10,
-              "techDebt": 5,
-              "timelineRisk": 10
-            },
-            "hidden": "Week 6: David will override your decisions more. Micromanagement increases."
+          "text": "Запропонувати базову версію AI (наприклад, проста система рекомендацій на основі правил)",
+          "consequence": "Креативне рішення. Більше роботи, але керовано. Андрій задоволений, команда напружена, але справляється.",
+          "metrics": {
+            "clientTrust": 5,
+            "teamMood": -5,
+            "techDebt": 10,
+            "timelineRisk": 10
           }
         }
       ]
@@ -340,94 +255,69 @@
     {
       "weekNumber": 4,
       "phase": "Development",
-      "title": "The Silent Blocker",
-      "context": "You chose your path last week. Olena has been quiet all week. You checked in yesterday. She said she's \"working on design system first — otherwise we'll have inconsistent UI later.\" She's right. But Maksym has been idle for three days. He keeps asking \"when can I start coding?\"\n\nYana started backend architecture. She's not waiting for designs. But frontend is blocked.\n\nIt's Thursday afternoon. David messaged: \"Can I see designs tomorrow?\"",
+      "title": "Тихий блокер",
+      "context": "Максим застряг на складній API-інтеграції вже 3 дні, але не просив допомоги. Його таски червоні на борді. Інші члени команди не знають про проблему.",
       "signals": [
         {
-          "from": "Maksym (Frontend)",
-          "time": "2:47 PM",
-          "avatar": "💻",
-          "message": "Yeah, I thought I'd wait for the real endpoint. Mock data feels like double work. But I can switch if you want."
+          "person": "Олена",
+          "message": "Чекаю на API Максима, щоб закінчити свій фронтенд. @Максим як прогрес?",
+          "sentiment": "waiting"
         },
         {
-          "from": "Yana (Backend)",
-          "time": "3:01 PM",
-          "avatar": "⚙️",
-          "message": "I'm blocked on Stripe webhook testing. Can't move forward until I get test account approved. Waiting on David."
+          "person": "Максим",
+          "message": "Скоро буде. Вирішую кілька проблем.",
+          "sentiment": "vague"
         },
         {
-          "from": "David Chen (CEO)",
-          "time": "5:32 PM",
-          "avatar": "👔",
-          "message": "Stripe test account? I thought we had that. Let me check. Might be tomorrow."
-        },
-        {
-          "from": "Andriy (QA)",
-          "time": "6:15 PM",
-          "avatar": "🧪",
-          "message": "(no message, but his Jira tasks are all marked \"Waiting for dev\")"
+          "person": "Яна",
+          "message": "Помітила, що ті самі таски червоні вже кілька днів. Все ок, Максиме?",
+          "sentiment": "concerned"
         }
       ],
       "situation": "Maksym lost 3 days waiting for an endpoint that won't be ready for another week. Yana is blocked on external approval. The sprint is derailing. No one escalated early. Everyone thought it would resolve itself.",
       "options": [
         {
           "id": "A",
-          "title": "Let it slide, focus on next sprint",
-          "description": "Accept the loss, don't make drama, reset expectations for next week.",
-          "shortConsequence": "Team learns nothing about early escalation",
-          "consequences": {
-            "immediate": "You decide not to make a big deal of it. Sprint ends with minimal output. Team resets for next week. But the pattern continues — people wait too long to escalate blockers. Week 7 will have the same issue, costing you another 3 days.",
-            "metrics": {
-              "clientTrust": -5,
-              "teamMood": 0,
-              "techDebt": 0,
-              "timelineRisk": -10
-            }
+          "text": "Довіряти Максиму — він досвідчений розробник, сам впорається",
+          "consequence": "Максим продовжує боротися наодинці. Затримка поглиблюється. Інтеграція займає ще тиждень.",
+          "metrics": {
+            "clientTrust": 0,
+            "teamMood": -5,
+            "techDebt": 10,
+            "timelineRisk": 15
           }
         },
         {
           "id": "B",
-          "title": "Implement daily standups",
-          "description": "Require 15-min daily sync to catch blockers early.",
-          "shortConsequence": "Adds overhead, might feel like micromanagement",
-          "consequences": {
-            "immediate": "You announce daily standups starting Monday. Maksym rolls his eyes slightly. Yana is neutral. Team feels like you don't trust them. But blockers do get surfaced faster. Week 6: you catch a critical API issue 2 days earlier because of standups.",
-            "metrics": {
-              "clientTrust": 0,
-              "teamMood": -10,
-              "techDebt": 5,
-              "timelineRisk": 10
-            }
+          "text": "Публічно конфронтувати його на стендапі про затримку",
+          "consequence": "Максим відчуває себе викритим. Визнає проблему, але моральний дух пошкоджено.",
+          "metrics": {
+            "clientTrust": 0,
+            "teamMood": -15,
+            "techDebt": 0,
+            "timelineRisk": -5
           }
         },
         {
           "id": "C",
-          "title": "Create \"blocked\" protocol",
-          "description": "Establish rule: if blocked >4 hours, escalate immediately, no shame.",
-          "shortConsequence": "Cultural change, takes time to adopt",
-          "consequences": {
-            "immediate": "You create a Slack channel #blockers and set the rule: blocked >4 hours = post there. Maksym and Yana agree it's reasonable. Takes 2 weeks for team to adopt the habit, but by Week 7 they're escalating early. You save 5 days across remaining weeks.",
-            "metrics": {
-              "clientTrust": 0,
-              "teamMood": 5,
-              "techDebt": 0,
-              "timelineRisk": 15
-            }
+          "text": "Провести приватну 1-on-1 зустріч, щоб зрозуміти блокер",
+          "consequence": "Максим відкривається про технічні виклики. Разом знаходите рішення або допомогу.",
+          "metrics": {
+            "clientTrust": 0,
+            "teamMood": 10,
+            "techDebt": -5,
+            "timelineRisk": -10
           }
         },
         {
           "id": "D",
-          "title": "Have 1-on-1s with Maksym and Yana",
-          "description": "Talk privately about communication breakdown, no team blame.",
-          "shortConsequence": "Addresses symptoms, not system",
-          "consequences": {
-            "immediate": "You have separate calls with Maksym and Yana. Both are receptive and apologetic. They commit to better communication. It works for this sprint, but Week 8: Olena has the same issue with a design blocker she doesn't escalate. The system didn't change.",
-            "metrics": {
-              "clientTrust": 0,
-              "teamMood": 10,
-              "techDebt": 0,
-              "timelineRisk": 0
-            }
+          "text": "Призначити Олену допомогти йому (парне програмування)",
+          "consequence": "Вони вирішують це разом, але Олена відстає від своїх тасок. Компроміс.",
+          "metrics": {
+            "clientTrust": 0,
+            "teamMood": 5,
+            "techDebt": -5,
+            "timelineRisk": 5
           }
         }
       ]
@@ -435,94 +325,69 @@
     {
       "weekNumber": 5,
       "phase": "Development",
-      "title": "The Quiet Rebellion",
-      "context": "You chose your path last week. Created a \"blocked\" protocol. Team agreed in principle. Maksym apologized, said it won't happen again.\n\nWeek starts normal. Yana unblocked, now working on CSV import backend. Maksym is catching up on dashboard. Olena delivered final designs for analytics page. Andriy started exploratory testing on dev environment.\n\nThursday morning. Andriy posts in team chat: \"Found 12 bugs in dashboard. Critical ones: data doesn't refresh, filters don't work, date range breaks on edge cases.\"\n\nMaksym responds: \"Yeah, I know. Those are tracked. Will fix after I finish analytics page.\"\n\nAndriy replies: \"But demo is in 7 weeks. If we don't fix now, they pile up.\"\n\nMaksym doesn't respond. You check his tasks. He's working on new features, not fixing bugs. You message him privately. He says: \"New features are more important. Bugs can wait.\"",
+      "title": "Тихий бунт",
+      "context": "Команда почала пропускати стендапи. Повідомлення в Slack стають коротшими. Ніхто прямо не скаржиться, але енергія впала. Ви відчуваєте опір.",
       "signals": [
         {
-          "from": "Andriy (QA)",
-          "time": "10:42 AM",
-          "avatar": "🧪",
-          "message": "Should I keep testing or wait for fixes? I'm finding issues faster than they're getting resolved."
+          "person": "Олена",
+          "message": "[Пропустила ранковий стендап]",
+          "sentiment": "absent"
         },
         {
-          "from": "Maksym (Frontend)",
-          "time": "11:18 AM",
-          "avatar": "💻",
-          "message": "Let's do bugs in cleanup week. Right now I need to ship features or we won't have anything to demo."
+          "person": "Максим",
+          "message": "Працюватиму над функціоналом. Оновлю в кінці дня.",
+          "sentiment": "distant"
         },
         {
-          "from": "Yana (Backend)",
-          "time": "1:25 PM",
-          "avatar": "⚙️",
-          "message": "For what it's worth, I agree with Maksym. We're not feature complete. Bugs are inevitable."
-        },
-        {
-          "from": "Olena (Designer)",
-          "time": "3:04 PM",
-          "avatar": "🎨",
-          "message": "I'm seeing bugs in designs I delivered. It looks broken. This will reflect poorly in demo."
+          "person": "Яна",
+          "message": "[Онлайн, але не відповідає на повідомлення]",
+          "sentiment": "withdrawn"
         }
       ],
       "situation": "There's a philosophical split. Maksym and Yana want feature velocity. Andriy and Olena want quality. Both are right. You have 7 weeks. If you slow down for bugs now, you might not finish features. If you ignore bugs, demo will look broken.",
       "options": [
         {
           "id": "A",
-          "title": "Feature freeze, fix bugs",
-          "description": "Stop new development for 1 week, clean up existing work.",
-          "shortConsequence": "Quality improves, but features delayed",
-          "consequences": {
-            "immediate": "You announce feature freeze. Maksym is frustrated but complies. Team spends full week on bugs. Dashboard becomes stable. By Friday, 10 of 12 bugs fixed. Demo quality improves significantly. But you're now 1 week behind on features. Week 9: you'll have to cut something.",
-            "metrics": {
-              "clientTrust": 0,
-              "teamMood": -5,
-              "techDebt": 15,
-              "timelineRisk": -10
-            }
+          "text": "Посилити процес — обов'язкові стендапи, більше чекінів",
+          "consequence": "Команда дотримується правил, але відчуває мікроменеджмент. Моральний дух падає далі.",
+          "metrics": {
+            "clientTrust": 0,
+            "teamMood": -20,
+            "techDebt": 0,
+            "timelineRisk": 10
           }
         },
         {
           "id": "B",
-          "title": "Continue features, accept bugs",
-          "description": "Tell Andriy to log issues, fix them in final weeks.",
-          "shortConsequence": "Technical debt grows, might not have time later",
-          "consequences": {
-            "immediate": "You tell Andriy to keep logging bugs, you'll have \"cleanup sprint\" before demo. Maksym is relieved and moves fast on features. By Week 8: 47 bugs logged. Week 11: you have 3 days to fix them all. 23 bugs still open at demo. Product feels unstable.",
-            "metrics": {
-              "clientTrust": 5,
-              "teamMood": 5,
-              "techDebt": -25,
-              "timelineRisk": -15
-            }
+          "text": "Організувати ретроспективу середини спринту, щоб озвучити проблеми",
+          "consequence": "Команда розкриває вигорання та фрустрації. Важка розмова, але катарсична.",
+          "metrics": {
+            "clientTrust": 0,
+            "teamMood": 15,
+            "techDebt": 0,
+            "timelineRisk": 0
           }
         },
         {
           "id": "C",
-          "title": "Parallel tracks",
-          "description": "Maksym does features, Andriy fixes critical bugs himself (basic frontend changes).",
-          "shortConsequence": "Andriy oversteps role, might create conflicts",
-          "consequences": {
-            "immediate": "You ask Andriy to fix \"simple\" bugs himself — button styling, text changes. He agrees but struggles with React code. His fixes introduce 3 new bugs. Maksym discovers this Week 7 and is upset: \"Who changed my code?\" Team tension increases.",
-            "metrics": {
-              "clientTrust": 0,
-              "teamMood": -15,
-              "techDebt": -10,
-              "timelineRisk": 0
-            }
+          "text": "Ігнорувати це — вони професіонали, доставлятимуть незалежно від настрою",
+          "consequence": "Продуктивність знижується. Команда відчуває себе нечуваною. Токсичність наростає.",
+          "metrics": {
+            "clientTrust": 0,
+            "teamMood": -15,
+            "techDebt": 10,
+            "timelineRisk": 15
           }
         },
         {
           "id": "D",
-          "title": "Negotiated ratio",
-          "description": "Each sprint: 70% features, 30% bug fixes. Compromise.",
-          "shortConsequence": "Neither side fully happy, but balanced",
-          "consequences": {
-            "immediate": "You propose 70/30 split. Maksym isn't thrilled but accepts. Andriy feels heard. Progress continues steadily. Bug count stays manageable (~15 by Week 10). Demo quality is acceptable but not perfect. Team feels the compromise was fair.",
-            "metrics": {
-              "clientTrust": 0,
-              "teamMood": 5,
-              "techDebt": 5,
-              "timelineRisk": 0
-            }
+          "text": "Влаштувати неформальний тімбілдінг (віртуальна кава, гра, тощо)",
+          "consequence": "Легке покращення настрою, але корінні проблеми не вирішені. Тимчасове полегшення.",
+          "metrics": {
+            "clientTrust": 0,
+            "teamMood": 5,
+            "techDebt": 0,
+            "timelineRisk": 0
           }
         }
       ]
@@ -530,673 +395,78 @@
     {
       "weekNumber": 6,
       "phase": "Development",
-      "title": "The Founder's Doubt",
-      "context": "You chose your path last week. Maksym wasn't thrilled but accepted it. Andriy felt heard. Bugs are getting fixed, features are moving slower but steadier.\n\nMid-week. David schedules 1-on-1 with you. Unusual. He's normally in group chats. Call starts. He's not his usual energetic self.\n\n\"I've been thinking. Maybe we're building the wrong thing. I talked to three more customers this week. They all want different features. One wants Slack integration. Another wants API access. Third one wants white-labeling.\"\n\nHe pauses. \"What if we're too narrow? Should we pivot?\"\n\nYou're six weeks in. Half the budget spent. Demo in six weeks. And he's questioning the core product.",
+      "title": "Сумніви засновника",
+      "context": "Андрій надіслав нічне повідомлення, що він \"не впевнений у напрямку продукту\". Хоче переглянути дизайн і можливо змінити ціле ціннісне твердження. Команда вже на півдорозі.",
       "signals": [
         {
-          "from": "David Chen (CEO)",
-          "time": "4:15 PM",
-          "avatar": "👔",
-          "message": "Don't tell the team yet. But I'm genuinely unsure. Competitor launched white-label version yesterday. We look limited."
+          "person": "Андрій",
+          "message": "[2:34 AM] Не можу спати. Думаю, ми вирішуємо не ту проблему. Що якщо ми сфокусуємося на малому бізнесі замість enterprise?",
+          "sentiment": "panicking"
         },
         {
-          "from": "Yana (Backend)",
-          "time": "(unaware of David's doubts)",
-          "avatar": "⚙️",
-          "message": "CSV import is done. Moving to analytics calculation engine. Should be ready by Monday."
+          "person": "Яна",
+          "message": "Який?! Ми на 6 тижні. Зміна цільового ринку зараз означає перероблення всього.",
+          "sentiment": "alarmed"
         },
         {
-          "from": "Olena (Designer)",
-          "time": "(unaware)",
-          "avatar": "🎨",
-          "message": "Designs for settings page are ready for review. Let me know when you have 15 min."
-        },
-        {
-          "from": "Maksym (Frontend)",
-          "time": "(unaware)",
-          "avatar": "💻",
-          "message": "Dashboard is looking good. Fixed 8 bugs this week. Can we review it together tomorrow?"
+          "person": "Максим",
+          "message": "Я розумію сумніви, але ми маємо реальний прогрес. Чи не краще закінчити це і обернути на v2?",
+          "sentiment": "rational"
         }
       ],
       "situation": "David is having a crisis of confidence. The team is executing well, unaware of his doubts. If you tell them, morale collapses. If you don't, you might be building the wrong thing. You have no authority to override his strategic decisions.",
       "options": [
         {
           "id": "A",
-          "title": "Validate his concerns",
-          "description": "Agree that pivoting might be right, help him explore alternatives, pause development.",
-          "shortConsequence": "Team stops, loses 2+ weeks, might never recover",
-          "consequences": {
-            "immediate": "You tell David his concerns are valid. You pause sprints to explore pivot options. Team is confused and demotivated. You spend 2 weeks on customer interviews and competitor analysis. Conclusion: original direction was correct. You've lost 2 weeks and team trust. Timeline unrecoverable.",
-            "metrics": {
-              "clientTrust": -15,
-              "teamMood": -25,
-              "techDebt": 0,
-              "timelineRisk": -30
-            }
+          "text": "Підтримати розворот Андрія — він бачить ринок, якого ми не бачимо",
+          "consequence": "Масштабна переробка. Команда деморалізована. Таймлайн зривається.",
+          "metrics": {
+            "clientTrust": 5,
+            "teamMood": -25,
+            "techDebt": 20,
+            "timelineRisk": 40
           }
         },
         {
           "id": "B",
-          "title": "Challenge the pivot",
-          "description": "Tell him changing direction now is suicide, remind him of investor demo, push back.",
-          "shortConsequence": "Might damage relationship, but protect timeline",
-          "consequences": {
-            "immediate": "You tell David bluntly: \"Pivoting now kills the company. We're 50% done. Demo is in 6 weeks. Investors won't fund a team that can't execute.\" He's taken aback but respects the directness. Team continues. But David questions your judgment going forward. Week 9: he'll override one of your decisions.",
-            "metrics": {
-              "clientTrust": -10,
-              "teamMood": 10,
-              "techDebt": 0,
-              "timelineRisk": 5
-            }
+          "text": "Відштовхнути жорстко — нагадати про зобов'язання та витрачений час",
+          "consequence": "Андрій відчуває себе закритим. Продовжує, але відлучено. Довіра пошкоджена.",
+          "metrics": {
+            "clientTrust": -20,
+            "teamMood": 5,
+            "techDebt": 0,
+            "timelineRisk": 0
           }
         },
         {
           "id": "C",
-          "title": "Propose compromise",
-          "description": "Build core product as planned, add \"API access\" as stretch goal if time allows.",
-          "shortConsequence": "Sounds reasonable, but probably no time",
-          "consequences": {
-            "immediate": "You suggest continuing core product but exploring API access as Phase 2. David agrees. Team continues unaware. Week 10: you realize there's zero time for API. David is disappointed. Feels you promised something you couldn't deliver. Trust damaged.",
-            "metrics": {
-              "clientTrust": -5,
-              "teamMood": 0,
-              "techDebt": 0,
-              "timelineRisk": -5
-            }
+          "text": "Запропонувати швидкий експеримент для тестування його нової гіпотези (наприклад, опитування)",
+          "consequence": "Дані показують, що поточний напрям твердий. Андрій заспокоєний без зривання плану.",
+          "metrics": {
+            "clientTrust": 5,
+            "teamMood": 5,
+            "techDebt": 0,
+            "timelineRisk": 5
           }
         },
         {
           "id": "D",
-          "title": "Buy time",
-          "description": "Ask him to commit to current plan until Week 9, then decide. Give product a chance.",
-          "shortConsequence": "Delays decision, but keeps team moving",
-          "consequences": {
-            "immediate": "You tell David: \"Let's commit until Week 9. By then we'll have working product and real data on whether it resonates.\" He agrees reluctantly. Team continues focused. Week 9: product looks good, David's doubts fade. Crisis averted. But you spent emotional energy managing his anxiety.",
-            "metrics": {
-              "clientTrust": 0,
-              "teamMood": 5,
-              "techDebt": 0,
-              "timelineRisk": 0
-            }
-          }
-        }
-      ]
-    },
-    {
-      "weekNumber": 7,
-      "phase": "Development",
-      "title": "The Overworked Developer",
-      "context": "You chose your path last week. David agreed reluctantly. He said: \"Okay, but if it's not working by Week 9, we pivot.\" Fair enough. You didn't tell the team about this conversation.\n\nWeek continues. Features are coming together. Dashboard works. Analytics calculations are running. CSV import is functional. Olena finished most designs. Andriy is testing.\n\nFriday, 7 PM. You're about to close laptop. Maksym posts in team chat: \"Pushed final changes for analytics page. Going offline. See you Monday.\"\n\nYou open dev environment to check. The page loads. But something feels off. You test a few scenarios. Date filters break. Data doesn't match dashboard. Export button does nothing.\n\nYou message Maksym: \"Hey, found some issues on analytics page. Can we sync tomorrow morning?\"\n\nNo response. You check his last seen: 7:04 PM.\n\nSaturday morning. He responds: \"Sorry, I'm burned out. Worked 60 hours this week. Need weekend off. Can we fix Monday?\"",
-      "signals": [
-        {
-          "from": "Maksym (Frontend)",
-          "time": "10:32 AM Saturday",
-          "avatar": "💻",
-          "message": "I know I said I'd be available but I can't anymore. Feeling exhausted. I'll fix it Monday, promise."
-        },
-        {
-          "from": "Yana (Backend)",
-          "time": "12:15 PM Saturday",
-          "avatar": "⚙️",
-          "message": "Just saw your message. I can look at backend side of analytics if it helps. But I'm also tired."
-        },
-        {
-          "from": "David Chen (CEO)",
-          "time": "3:47 PM Saturday",
-          "avatar": "👔",
-          "message": "Planning to show analytics page to potential customer Monday afternoon. Sending them demo link Sunday night. Looking good?"
-        },
-        {
-          "from": "Andriy (QA)",
-          "time": "(no message, offline for weekend)",
-          "avatar": "🧪",
-          "message": ""
-        }
-      ],
-      "situation": "Maksym is burned out. David is sharing demo Monday. The feature is broken. You can't force Maksym to work weekends. But if David sends broken demo, it's your reputation.",
-      "options": [
-        {
-          "id": "A",
-          "title": "Ask Maksym to work weekend",
-          "description": "Apologize, but explain urgency, ask for 3-4 hours Saturday to fix critical issues.",
-          "shortConsequence": "Might lose his trust or motivation long-term",
-          "consequences": {
-            "immediate": "You call Maksym, apologize, explain David is showing it Monday. He agrees reluctantly, works 4 hours Saturday. Bugs fixed. Demo works. But Maksym is resentful. Week 9: he's noticeably less engaged. Week 11: he tells you privately he's interviewing elsewhere. You might lose him post-launch.",
-            "metrics": {
-              "clientTrust": 10,
-              "teamMood": -20,
-              "techDebt": 5,
-              "timelineRisk": 0
-            }
-          }
-        },
-        {
-          "id": "B",
-          "title": "Fix it yourself",
-          "description": "You have some technical background. Spend Sunday fixing basic issues yourself.",
-          "shortConsequence": "Overstepping role, might break something else",
-          "consequences": {
-            "immediate": "You spend 6 hours Sunday fixing frontend bugs. Fix 2 out of 3 issues. But accidentally break data formatting on another page. Maksym discovers this Monday morning, frustrated: \"Why did you touch my code?\" Demo works but team dynamic damaged. Maksym feels you don't trust him.",
-            "metrics": {
-              "clientTrust": 5,
-              "teamMood": -15,
-              "techDebt": -10,
-              "timelineRisk": 0
-            }
-          }
-        },
-        {
-          "id": "C",
-          "title": "Tell David to delay demo share",
-          "description": "Explain the feature needs Monday morning fixes, send link Monday afternoon instead.",
-          "shortConsequence": "Honest, but David might lose trust in you",
-          "consequences": {
-            "immediate": "You call David Saturday evening, explain situation honestly. He's frustrated: \"I told customer Sunday.\" You offer to send link Monday 2 PM instead. Customer is fine with it. Maksym fixes bugs Monday morning. Demo works. David appreciates honesty but notes you \"couldn't deliver on time.\" Week 10: he double-checks your commitments.",
-            "metrics": {
-              "clientTrust": -10,
-              "teamMood": 10,
-              "techDebt": 0,
-              "timelineRisk": 0
-            }
-          }
-        },
-        {
-          "id": "D",
-          "title": "Let it go",
-          "description": "Send demo as-is, tell David \"some features are in progress,\" manage expectations.",
-          "shortConsequence": "David shows broken product to customer",
-          "consequences": {
-            "immediate": "David sends demo link Sunday night. Customer tests it Monday morning. Finds bugs. Responds: \"Looks early stage, let's reconnect when it's more stable.\" David is embarrassed and angry. Blames you for not flagging issues. Trust severely damaged. Week 8-12: he micromanages everything.",
-            "metrics": {
-              "clientTrust": -25,
-              "teamMood": 0,
-              "techDebt": 0,
-              "timelineRisk": -15
-            }
-          }
-        }
-      ]
-    },
-    {
-      "weekNumber": 8,
-      "phase": "Development",
-      "title": "The Integration Hell",
-      "context": "You chose your path last week. Told David the demo needs Monday morning polish. He wasn't happy but agreed. Maksym fixed the issues Monday. David sent demo link Monday afternoon. Customer responded positively.\n\nBut now integration phase starts. Stripe, CSV import, analytics engine — everything needs to work together. Individually they work. Together, things break.\n\nWednesday. Yana posts: \"Payment webhook triggers CSV import bug. Import fails silently. Lost two hours debugging this.\"\n\nThursday. Maksym: \"When dashboard refreshes during import, data shows partial state. UX is confusing.\"\n\nFriday. Andriy: \"I have 47 open bugs. 23 are integration issues. I don't even know who owns them.\"\n\nYou realize you built features in isolation. Integration testing was \"planned for later.\" It's later.",
-      "signals": [
-        {
-          "from": "Yana (Backend)",
-          "time": "11:52 AM",
-          "avatar": "⚙️",
-          "message": "This is why I said we need system design upfront. Now we're patching interactions we didn't consider."
-        },
-        {
-          "from": "Maksym (Frontend)",
-          "time": "1:18 PM",
-          "avatar": "💻",
-          "message": "I can't fix UI issues if backend behavior is unpredictable. We need stable APIs first."
-        },
-        {
-          "from": "Andriy (QA)",
-          "time": "2:40 PM",
-          "avatar": "🧪",
-          "message": "I'm going to stop logging bugs and just focus on critical path. Otherwise I'm just documenting chaos."
-        },
-        {
-          "from": "Olena (Designer)",
-          "time": "4:05 PM",
-          "avatar": "🎨",
-          "message": "Are we going to fix the UX issues or just ship broken flows? I need to know so I can adjust expectations."
-        }
-      ],
-      "situation": "Integration debt is real. You have 4 weeks until demo. The product kind of works, but feels fragile. Team is frustrated. Everyone is blaming process, not people. You need a reset.",
-      "options": [
-        {
-          "id": "A",
-          "title": "Integration sprint",
-          "description": "Declare next week \"integration week.\" No new features. Only cross-system fixes.",
-          "shortConsequence": "Right call, but loses 1 week of feature development",
-          "consequences": {
-            "immediate": "You announce integration sprint. Team spends full week testing cross-feature scenarios and fixing. By Friday: 35 of 47 bugs fixed. Product feels stable. But you're now 1 week behind. Week 12: you'll have to demo without user management feature David wanted. He'll be disappointed but understands.",
-            "metrics": {
-              "clientTrust": -5,
-              "teamMood": 10,
-              "techDebt": 20,
-              "timelineRisk": -10
-            }
-          }
-        },
-        {
-          "id": "B",
-          "title": "Prioritize critical path",
-          "description": "Define 3-4 core user flows, make those bulletproof, ignore edge cases.",
-          "shortConsequence": "Demo will work, but shallow coverage",
-          "consequences": {
-            "immediate": "You identify critical path: signup → connect Stripe → view dashboard → export data. Team focuses only on these flows. By Week 12: these 4 flows work perfectly. But anything outside this path is broken. Demo impresses investors because you control the script. But product isn't truly ready for customers.",
-            "metrics": {
-              "clientTrust": 10,
-              "teamMood": 0,
-              "techDebt": -15,
-              "timelineRisk": 5
-            }
-          }
-        },
-        {
-          "id": "C",
-          "title": "Divide and conquer",
-          "description": "Yana fixes backend integration, Maksym fixes frontend, they don't block each other.",
-          "shortConsequence": "Parallel work, but coordination overhead",
-          "consequences": {
-            "immediate": "Yana and Maksym work in parallel on integration fixes. Less blocking, but coordination issues. They fix same bug differently, creating conflicts. Spend 2 days in Week 9 resolving merge conflicts. Progress slower than expected. Week 12: still 15 integration bugs open.",
-            "metrics": {
-              "clientTrust": 0,
-              "teamMood": -10,
-              "techDebt": -5,
-              "timelineRisk": -10
-            }
-          }
-        },
-        {
-          "id": "D",
-          "title": "Reduce scope retroactively",
-          "description": "Remove CSV import from MVP, simplify product, reduce integration complexity.",
-          "shortConsequence": "Loses feature David promised to customer",
-          "consequences": {
-            "immediate": "You propose cutting CSV import — it's causing 60% of integration issues. David is shocked: \"But I promised that customer!\" You explain it's this or broken demo. He reluctantly agrees. Team relieved. Product simplifies. Integration bugs drop to 12. Week 12: customer asks about CSV, David has awkward conversation. Relationship strained.",
-            "metrics": {
-              "clientTrust": -15,
-              "teamMood": 15,
-              "techDebt": 15,
-              "timelineRisk": 10
-            }
-          }
-        }
-      ]
-    },
-    {
-      "weekNumber": 9,
-      "phase": "Deploy & Stabilization",
-      "title": "The Demo Disaster",
-      "context": "You chose your path last week. Defined critical path: user signup → connect Stripe → view dashboard → export data. Everything else is \"nice to have.\" Team focused. Integration is improving.\n\nIt's Thursday. David scheduled internal demo tomorrow for the board. \"Friendly run,\" he called it. Practice before investor demo in 3 weeks.\n\nFriday 10 AM. Demo starts. You're screen-sharing. Five board members on the call. David introduces: \"This is what we've built in 9 weeks.\"\n\nYou start demo. Signup works. Stripe connection... loading... still loading... error. Stripe API timeout.\n\nYou refresh. Try again. Works this time. Move to dashboard. It loads. But the numbers are wrong. Revenue shows $0 despite connected account having data.\n\nDavid jumps in: \"Ah, that's just test data. Moving on.\" But you see board members typing in chat to each other.\n\nYou continue. Export button. Click. Nothing happens. You click again. Page freezes.\n\nDemo ends. David says: \"We'll have it polished in 3 weeks.\" Board is silent.",
-      "signals": [
-        {
-          "from": "David Chen (CEO)",
-          "time": "11:47 AM",
-          "avatar": "👔",
-          "message": "What happened? That was embarrassing. We have 3 weeks to fix this or we're dead."
-        },
-        {
-          "from": "Yana (Backend)",
-          "time": "12:15 PM",
-          "avatar": "⚙️",
-          "message": "Stripe timeout is intermittent. I've seen it twice this week but couldn't reproduce consistently."
-        },
-        {
-          "from": "Maksym (Frontend)",
-          "time": "12:28 PM",
-          "avatar": "💻",
-          "message": "Export bug is new. Worked yesterday. I'll investigate."
-        },
-        {
-          "from": "Andriy (QA)",
-          "time": "1:03 PM",
-          "avatar": "🧪",
-          "message": "I flagged both issues in bug tracker. Stripe issue is marked 'low priority.' Export bug was found this morning."
-        }
-      ],
-      "situation": "The demo was a disaster. David is panicking. Board lost confidence. You have 3 weeks. The product mostly works, but \"mostly\" isn't enough for an investor demo. You need perfect execution.",
-      "options": [
-        {
-          "id": "A",
-          "title": "Feature freeze immediately",
-          "description": "No new work. Only stability, bug fixes, demo rehearsals.",
-          "shortConsequence": "Right call, but some planned features die",
-          "consequences": {
-            "immediate": "You declare feature freeze effective immediately. Maksym was halfway through settings page — it stays unfinished. Team focuses entirely on stability for 3 weeks. By Week 12: demo runs perfectly, zero bugs. But product has fewer features than originally planned. Investors notice missing pieces. Still fund, but at lower valuation.",
-            "metrics": {
-              "clientTrust": 5,
-              "teamMood": -5,
-              "techDebt": 25,
-              "timelineRisk": 20
-            }
-          }
-        },
-        {
-          "id": "B",
-          "title": "Rebuild critical path from scratch",
-          "description": "Yana rewrites Stripe integration, Maksym rebuilds export, you test obsessively.",
-          "shortConsequence": "Might fix root issues, but risky with 3 weeks left",
-          "consequences": {
-            "immediate": "Yana spends 1.5 weeks rewriting Stripe integration from scratch. It's cleaner but introduces new bugs. Week 11: you're still fixing issues from the rewrite. Demo day: it works, but barely. You stayed up 48 hours before demo fixing last-minute issues. Product works but team is destroyed.",
-            "metrics": {
-              "clientTrust": 0,
-              "teamMood": -25,
-              "techDebt": 10,
-              "timelineRisk": -20
-            }
-          }
-        },
-        {
-          "id": "C",
-          "title": "Add monitoring and fallbacks",
-          "description": "Keep features as-is, add error handling, retry logic, loading states.",
-          "shortConsequence": "Doesn't fix bugs, just hides them better",
-          "consequences": {
-            "immediate": "You add retry logic to Stripe calls, better error messages, loading indicators. Bugs still exist but are less visible. Week 12 demo: Stripe timeout happens but system retries automatically and succeeds. Export occasionally fails but shows \"Try again\" button. Demo looks polished but product is still fragile underneath.",
-            "metrics": {
-              "clientTrust": 10,
-              "teamMood": 0,
-              "techDebt": -15,
-              "timelineRisk": 5
-            }
-          }
-        },
-        {
-          "id": "D",
-          "title": "Hire external help",
-          "description": "Bring in contractor for 2 weeks to fix critical bugs while team builds features.",
-          "shortConsequence": "Costs money, coordination overhead, cultural tension",
-          "consequences": {
-            "immediate": "You hire senior contractor for $8K (eats into budget). He fixes Stripe and export bugs in 1 week. Efficient but team feels inadequate. Yana is offended: \"We could've fixed this.\" Contractor introduces different coding patterns. Week 12: bugs are fixed but codebase is inconsistent. Post-demo: team has to refactor contractor's code.",
-            "metrics": {
-              "clientTrust": 5,
-              "teamMood": -15,
-              "techDebt": -10,
-              "timelineRisk": 10
-            }
-          }
-        }
-      ]
-    },
-    {
-      "weekNumber": 10,
-      "phase": "Deploy & Stabilization",
-      "title": "The Midnight Message",
-      "context": "You chose your path last week. Feature freeze. David agreed reluctantly. Team is in full bug-fix mode. Andriy is testing every flow. Maksym is fixing frontend issues. Yana is stabilizing backend. Olena is polishing UI inconsistencies.\n\nIt's Tuesday night. 11:47 PM. You're in bed. Phone buzzes. Slack message. Yana: \"We have a problem.\"\n\nYou open laptop. She continues: \"Stripe changed their webhook format last week. I just found out. Our integration is broken for new accounts. Existing ones work. But any new signup after last Thursday gets wrong data.\"\n\nYou check. She's right. Stripe docs show API v2 migration. You're on v1. They deprecated it.\n\nYana: \"I can migrate to v2. But it's 3-4 days of work. And might break existing accounts during transition.\"\n\nIt's 12:03 AM. Demo is in 13 days. You have a critical integration rewrite needed.",
-      "signals": [
-        {
-          "from": "Yana (Backend)",
-          "time": "12:15 AM",
-          "avatar": "⚙️",
-          "message": "I should have caught this earlier. But their changelog is buried. I only found it because I was debugging why test account behaved differently."
-        },
-        {
-          "from": "Maksym (Frontend)",
-          "time": "(offline, unaware)",
-          "avatar": "💻",
-          "message": ""
-        },
-        {
-          "from": "Andriy (QA)",
-          "time": "(offline, unaware)",
-          "avatar": "🧪",
-          "message": ""
-        },
-        {
-          "from": "David Chen (CEO)",
-          "time": "(offline, but you know he'll panic if you tell him in the morning)",
-          "avatar": "👔",
-          "message": ""
-        }
-      ],
-      "situation": "Yana found a critical issue at midnight. She's offering to fix it, but it's risky. You could keep current integration and hope demo uses old account. Or migrate and risk breaking everything days before demo.",
-      "options": [
-        {
-          "id": "A",
-          "title": "Migrate to v2 immediately",
-          "description": "Yana starts tomorrow, works through weekend if needed, you block out 4 days for this.",
-          "shortConsequence": "Right long-term, but risky short-term",
-          "consequences": {
-            "immediate": "Yana works Thursday-Sunday migrating to v2. Saturday afternoon: migration breaks existing accounts. Panic. Sunday night at 11 PM: she fixes it. Monday: everything works on v2, future-proof. But team is exhausted. Demo prep delayed by 3 days. Week 11: rushed final testing. Demo day: works but you had no buffer for issues.",
-            "metrics": {
-              "clientTrust": 0,
-              "teamMood": -15,
-              "techDebt": 20,
-              "timelineRisk": -15
-            }
-          }
-        },
-        {
-          "id": "B",
-          "title": "Patch v1 to work",
-          "description": "Find workaround to make v1 functional for demo, migrate after investor meeting.",
-          "shortConsequence": "Technical debt, but safer for demo",
-          "consequences": {
-            "immediate": "Yana builds hacky workaround in 1 day — manually converts v1 to v2 format before processing. Works for demo. Post-demo Week 13: you have to do proper v2 migration. But investors funded you, so you have time. The workaround becomes permanent for 3 months. Eventually causes production incident.",
-            "metrics": {
-              "clientTrust": 5,
-              "teamMood": 0,
-              "techDebt": -20,
-              "timelineRisk": 10
-            }
-          }
-        },
-        {
-          "id": "C",
-          "title": "Use existing account for demo",
-          "description": "Don't fix it. Demo only with pre-migration account. Hope investors don't test signup.",
-          "shortConsequence": "Demo works, but product is broken for new users",
-          "consequences": {
-            "immediate": "You decide to demo with existing Stripe account (still on v1). Demo day: works perfectly. Investors impressed. They fund you. Week 13: first real customer tries to signup. Breaks. They churn. You spend 2 weeks firefighting v2 migration post-funding. Your launch is delayed. Early adopters frustrated.",
-            "metrics": {
-              "clientTrust": 10,
-              "teamMood": 5,
-              "techDebt": -25,
-              "timelineRisk": 5
-            }
-          }
-        },
-        {
-          "id": "D",
-          "title": "Tell David now",
-          "description": "Wake him up (or message for morning), let him decide since it's business-critical.",
-          "shortConsequence": "Escalates decision, but might create panic",
-          "consequences": {
-            "immediate": "You message David at 12:30 AM. He wakes up, calls you at 1 AM. Panics. Wants to migrate. Then changes mind. Then panics again. By 3 AM you have no decision. Morning: he decides to keep v1 for demo. But your midnight escalation made him lose confidence in your judgment. Week 11-12: he micromanages everything.",
-            "metrics": {
-              "clientTrust": -15,
-              "teamMood": -10,
-              "techDebt": -10,
-              "timelineRisk": 0
-            }
-          }
-        }
-      ]
-    },
-    {
-      "weekNumber": 11,
-      "phase": "Deploy & Stabilization",
-      "title": "The Final Push",
-      "context": "You chose your path last week. Yana built a workaround. It's hacky. It works. Stripe v2 migration is postponed to post-demo. David doesn't know the full story. He just knows \"it's fixed.\"\n\nIt's the final week before demo. Monday. Team is in war room mode. Every day you run full demo rehearsal. Every evening you find issues. Every night someone fixes them.\n\nWednesday. Demo is Friday. David is rehearsing his pitch. You're rehearsing the product. Everything is working. Finally.\n\nThursday morning. Andriy runs final test. Finds new bug. Not critical. But visible. When user disconnects Stripe, old data remains in dashboard. Looks like the disconnect didn't work.\n\nMaksym says: \"I can fix it in 3 hours.\" Yana says: \"But we'll need to redeploy. And retesting takes 2 hours. We have 24 hours until demo.\"\n\nDavid walks by: \"Everything ready?\"",
-      "signals": [
-        {
-          "from": "Andriy (QA)",
-          "time": "9:42 AM",
-          "avatar": "🧪",
-          "message": "This bug won't stop demo. But if investor disconnects and reconnects Stripe during demo, they'll see stale data."
-        },
-        {
-          "from": "Maksym (Frontend)",
-          "time": "10:05 AM",
-          "avatar": "💻",
-          "message": "I can fix it. But do we deploy 12 hours before demo? That's the question."
-        },
-        {
-          "from": "Yana (Backend)",
-          "time": "10:18 AM",
-          "avatar": "⚙️",
-          "message": "I vote no. We're stable now. Don't touch production before demo."
-        },
-        {
-          "from": "Olena (Designer)",
-          "time": "10:35 AM",
-          "avatar": "🎨",
-          "message": "From UX perspective, it's confusing. But not demo-breaking. I'd leave it."
-        }
-      ],
-      "situation": "Minor bug. Easy fix. But deploying day before demo is risky. If something breaks during deployment, you have no buffer. But if investor hits this bug during demo, it looks unpolished.",
-      "options": [
-        {
-          "id": "A",
-          "title": "Fix and deploy now",
-          "description": "Maksym fixes, you deploy Thursday afternoon, test all evening.",
-          "shortConsequence": "Clean product, but risk of deployment issues",
-          "consequences": {
-            "immediate": "Maksym fixes bug in 2 hours. You deploy at 3 PM. Testing starts. 6 PM: discover deployment broke dashboard loading for Safari. Panic. Maksym and Yana work until 2 AM fixing it. Friday morning at 8 AM: finally stable. Demo at 2 PM: works but team is zombies. You pulled all-nighter for minor bug.",
-            "metrics": {
-              "clientTrust": 5,
-              "teamMood": -20,
-              "techDebt": 5,
-              "timelineRisk": -10
-            }
-          }
-        },
-        {
-          "id": "B",
-          "title": "Don't touch anything",
-          "description": "Leave the bug, brief David, tell him to avoid disconnect flow in demo.",
-          "shortConsequence": "Stable, but requires demo choreography",
-          "consequences": {
-            "immediate": "You tell David: \"Don't disconnect Stripe during demo.\" He nods. Demo day: goes perfectly. Investors never try disconnect. Funding secured. Post-demo: you fix bug in Week 13. Right decision. Team appreciates you prioritized stability over perfection. Yana later tells you: \"That was the right call.\"",
-            "metrics": {
-              "clientTrust": 0,
-              "teamMood": 10,
-              "techDebt": -5,
-              "timelineRisk": 10
-            }
-          }
-        },
-        {
-          "id": "C",
-          "title": "Fix but don't deploy",
-          "description": "Maksym fixes in code, you deploy Monday after demo, keeps production untouched.",
-          "shortConsequence": "Doesn't help demo, but you feel productive",
-          "consequences": {
-            "immediate": "Maksym spends Thursday fixing code in development branch. You don't deploy. Demo day: bug still there. Investor tries disconnect flow. Sees stale data. Asks: \"Is this supposed to stay?\" David improvises: \"That's a feature for audit trail.\" Investor skeptical but doesn't block funding. You got lucky.",
-            "metrics": {
-              "clientTrust": -5,
-              "teamMood": 0,
-              "techDebt": 0,
-              "timelineRisk": 0
-            }
-          }
-        },
-        {
-          "id": "D",
-          "title": "Let David decide",
-          "description": "Present both options, make it his call since it's his demo.",
-          "shortConsequence": "Passes responsibility, but might stress him out",
-          "consequences": {
-            "immediate": "You present both options to David. He freezes. Can't decide. Asks you: \"What would you do?\" You're back to square one. He finally says: \"Let's fix it.\" You deploy. But his indecision wasted 3 hours. Deploy happens at 6 PM instead of 3 PM. Less testing time. Demo day: works, but was unnecessarily stressful.",
-            "metrics": {
-              "clientTrust": -5,
-              "teamMood": -10,
-              "techDebt": 0,
-              "timelineRisk": -5
-            }
-          }
-        }
-      ]
-    },
-    {
-      "weekNumber": 12,
-      "phase": "Close",
-      "title": "The Demo",
-      "context": "You chose your path last week. Didn't deploy the fix. Briefed David: avoid Stripe disconnect in demo. He nodded.\n\nIt's Friday. 2 PM. Investor demo. Eight people on Zoom. David is presenting. You're running the product. Maksym and Yana are on standby in another room, just in case.\n\nDavid introduces the problem Subflow solves. Explains the market. Shows competitor weaknesses. Then: \"Let me show you what we built.\"\n\nYou share screen. Demo starts. Signup flow — perfect. Stripe connection — loads smoothly. Dashboard — data appears. Numbers are correct. Export — works. CSV import — uploads without error. Analytics page — charts render.\n\nIt's working. Everything is working.\n\nDavid shows different views. Filters. Date ranges. All smooth. Investors are nodding. One asks: \"Can you show user management?\" You freeze. User management wasn't built.\n\nDavid pivots: \"That's in the next sprint. For MVP, we focused on core analytics.\" Investor accepts it.\n\nDemo ends. 15 minutes. No crashes. No freezes. No bugs.\n\nDavid closes with roadmap. Call ends. He messages you: \"We did it.\"\n\nAn hour later. Lead investor emails David: \"Impressive progress. We're in for Series B. Let's talk terms next week.\"",
-      "signals": [
-        {
-          "from": "David Chen (CEO)",
-          "time": "4:27 PM",
-          "avatar": "👔",
-          "message": "I can't believe it worked. Thank you. Seriously. I know this was brutal."
-        },
-        {
-          "from": "Yana (Backend)",
-          "time": "4:45 PM",
-          "avatar": "⚙️",
-          "message": "Wait, we got Series B? After all that chaos? Wow."
-        },
-        {
-          "from": "Maksym (Frontend)",
-          "time": "5:02 PM",
-          "avatar": "💻",
-          "message": "I'm going to sleep for 48 hours. But yeah, we did it. Feels unreal."
-        },
-        {
-          "from": "Olena (Designer)",
-          "time": "5:38 PM",
-          "avatar": "🎨",
-          "message": "The product is not what I envisioned. But it worked when it mattered. I guess that's enough."
-        }
-      ],
-      "situation": "The demo succeeded. Series B is happening. The team is relieved. But you know the product is held together with duct tape. Stripe v2 migration is pending. Bugs are logged but unfixed. Integration issues are hidden, not resolved. David will want to start aggressive feature development next week. The team needs rest. The codebase needs refactoring.",
-      "options": [
-        {
-          "id": "A",
-          "title": "Push for stabilization sprint",
-          "description": "Tell David the team needs 2 weeks to clean up tech debt before Series B acceleration.",
-          "shortConsequence": "Right call, but he might see it as slowing momentum",
-          "consequences": {
-            "immediate": "You tell David: \"We need 2 weeks to fix what we postponed.\" He's resistant: \"But we have momentum!\" You explain technical debt reality. He reluctantly agrees to 1 week. Team grateful but still exhausted. Week 13-14: you fix critical issues. Week 15: aggressive feature development starts. Team somewhat recovered. Codebase cleaner. Sustainable pace.",
-            "metrics": {
-              "clientTrust": -5,
-              "teamMood": 15,
-              "techDebt": 15,
-              "timelineRisk": 5
-            }
-          }
-        },
-        {
-          "id": "B",
-          "title": "Ride the momentum",
-          "description": "Start building next features immediately, deal with tech debt \"later.\"",
-          "shortConsequence": "Team burns out, debt compounds",
-          "consequences": {
-            "immediate": "David announces new features starting Monday. Team groans internally but complies. Week 13: Maksym calls in sick (burnout). Week 14: Critical bug in production from postponed Stripe migration. Week 15: Yana gives notice. Technical debt becomes unmanageable. By Month 4: you're rebuilding entire system. Momentum killed by burnout.",
-            "metrics": {
-              "clientTrust": 10,
-              "teamMood": -30,
-              "techDebt": -30,
-              "timelineRisk": -25
-            }
-          }
-        },
-        {
-          "id": "C",
-          "title": "Negotiate hybrid",
-          "description": "1 week rest, 1 week cleanup, then aggressive growth.",
-          "shortConsequence": "Compromise, but might not be enough rest",
-          "consequences": {
-            "immediate": "You propose: Week 13 off, Week 14 cleanup, Week 15 new features. David agrees. Team takes vacation. Returns refreshed. Week 14: fix most critical debt. Week 15: start new features at sustainable pace. Not perfect but manageable. Team stays intact. Codebase improvable. Sustainable for 6+ months.",
-            "metrics": {
-              "clientTrust": 0,
-              "teamMood": 20,
-              "techDebt": 10,
-              "timelineRisk": 0
-            }
-          }
-        },
-        {
-          "id": "D",
-          "title": "Let team decide",
-          "description": "Ask Yana, Maksym, Olena, Andriy what they need. Trust their judgment.",
-          "shortConsequence": "Empowering, but they might say what you want to hear",
-          "consequences": {
-            "immediate": "You ask team what they need. Maksym: \"Honestly? 2 weeks off.\" Yana: \"1 week rest, 1 week fixing my hacks.\" Olena: \"Just acknowledgment this wasn't sustainable.\" Andriy: \"Clear backlog so I can start fresh.\" You present this to David. He's moved by their honesty. Agrees to 2 weeks. Team loyalty skyrockets. They return energized.",
-            "metrics": {
-              "clientTrust": -5,
-              "teamMood": 25,
-              "techDebt": 10,
-              "timelineRisk": 5
-            }
+          "text": "Зателефонувати йому наступного ранку для структурованої дискусії",
+          "consequence": "Андрій визнає нічну паніку. Узгоджує продовження курсу з дрібними коригуваннями.",
+          "metrics": {
+            "clientTrust": 0,
+            "teamMood": 10,
+            "techDebt": 0,
+            "timelineRisk": -5
           }
         }
       ]
     }
   ],
   "finalReview": {
-    "outcomeTitle": "The Demo Succeeded. But...",
-    "outcomeText": "The MVP launched. The demo worked. Series B funding secured.\n\nBut the product you showed wasn't the product in production. You demonstrated core flows under controlled conditions. Investors saw potential, not reality.\n\nThe team delivered the impossible. They worked nights. They skipped quality steps. They built workarounds instead of solutions. They said yes when they meant \"maybe if we're lucky.\"\n\nThe hidden cost: technical debt that will take 3 months to unwind. A team that trusts you but is exhausted. A codebase that works but nobody fully understands anymore. A founder who thinks you can do this again, faster.",
-    "reflectionTitle": "This is Project Management",
-    "reflectionText": "Not the conference talk version. The real one.\n\nYou didn't fail. But you didn't win cleanly either.\n\nYou made twelve decisions. Most were reasonable in isolation. But decisions compound. Each trade-off borrowed from the future. Each \"yes\" to speed was a \"no\" to stability.\n\nThe team doesn't blame you. They delivered what you asked. They trust you. But trust is a resource too. And you've spent it.\n\nNext phase starts Monday. David expects acceleration. The team expects rest. The codebase expects refactoring. You can't give everyone what they need.\n\nAnd that's the truth nobody puts in the retrospective."
+    "title": "Підсумки проєкту",
+    "outcomeTitle": "Ваш результат",
+    "outcomeText": "Базуючись на ваших рішеннях протягом 6 тижнів, ось як розгорнувся ваш проєкт...",
+    "reflectionText": "Управління проєктами — це не про ідеальні рішення. Це про навігацію у невизначеності, балансування конкуруючих пріоритетів та побудову довіри з вашою командою та стейкхолдерами. Кожен вибір має наслідки — іноді видимі відразу, іноді тільки згодом."
   }
 }
