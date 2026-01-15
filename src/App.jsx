@@ -41,6 +41,9 @@ function App() {
     // Store selected option
     setSelectedOption(option)
     
+    // Store old metrics before updating
+    const oldMetrics = { ...metrics }
+    
     // Calculate new metrics
     const newMetrics = {
       clientTrust: clamp(metrics.clientTrust + option.consequences.metrics.clientTrust, 0, 100),
@@ -49,10 +52,10 @@ function App() {
       timelineRisk: clamp(metrics.timelineRisk + option.consequences.metrics.timelineRisk, 0, 100)
     }
     
-    // Store consequences for display
+    // Store consequences for display (including old metrics)
     setCurrentConsequences({
       option: option,
-      oldMetrics: { ...metrics },
+      oldMetrics: oldMetrics,
       newMetrics: newMetrics
     })
     
@@ -144,6 +147,8 @@ function App() {
           weekTitle={scenarioData.weeks[currentWeek - 1].title}
           selectedOption={selectedOption}
           metrics={metrics}
+          weekData={scenarioData.weeks[currentWeek - 1]}
+          oldMetrics={currentConsequences.oldMetrics}
           onContinue={continueToNextWeek}
         />
       )}
@@ -153,6 +158,7 @@ function App() {
           finalData={scenarioData.finalReview}
           metrics={metrics}
           decisionHistory={decisionHistory}
+          scenarioData={scenarioData}
           onRestart={restartSimulation}
         />
       )}

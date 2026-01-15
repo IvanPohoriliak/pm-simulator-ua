@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { generateAIFeedback } from '../utils/claudeAPI'
 
-function FeedbackScreen({ weekNumber, weekTitle, selectedOption, metrics, onContinue }) {
+function FeedbackScreen({ weekNumber, weekTitle, selectedOption, metrics, onContinue, weekData, oldMetrics }) {
   const [feedback, setFeedback] = useState('')
   const [loading, setLoading] = useState(true)
 
@@ -13,15 +13,18 @@ function FeedbackScreen({ weekNumber, weekTitle, selectedOption, metrics, onCont
         weekTitle,
         selectedOption.id,
         selectedOption.title,
-        metrics
+        metrics,
+        weekData,
+        selectedOption,
+        oldMetrics
       )
       setFeedback(result)
       setLoading(false)
     }
     loadFeedback()
-  }, [weekNumber, weekTitle, selectedOption, metrics])
+  }, [weekNumber, weekTitle, selectedOption, metrics, weekData, oldMetrics])
 
-  const isLastWeek = weekNumber >= 3
+  const isLastWeek = weekNumber >= 12
 
   return (
     <div className="feedback-screen">

@@ -1,14 +1,37 @@
-function FinalReviewScreen({ finalData, metrics, decisionHistory, onRestart }) {
+import { useState, useEffect } from 'react'
+import { generateFinalReview } from '../utils/claudeAPI'
+
+function FinalReviewScreen({ finalData, metrics, decisionHistory, scenarioData, onRestart }) {
+  const [aiReview, setAiReview] = useState('')
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function loadFinalReview() {
+      setLoading(true)
+      const review = await generateFinalReview(decisionHistory, metrics, scenarioData)
+      setAiReview(review)
+      setLoading(false)
+    }
+    loadFinalReview()
+  }, [decisionHistory, metrics, scenarioData])
+
   return (
     <div className="final-screen">
       <div className="final-header">
         <h1 className="final-title">Project Complete</h1>
-        <h2>{finalData.outcomeTitle}</h2>
+        <h2>The 12-Week Retrospective</h2>
       </div>
 
       <div className="final-section">
         <h3>What Happened</h3>
-        <p className="outcome-text">{finalData.outcomeText}</p>
+        {loading ? (
+          <div className="loading-spinner">
+            <div className="spinner"></div>
+            <p>Generating final review...</p>
+          </div>
+        ) : (
+          <p className="outcome-text" style={{ whiteSpace: 'pre-line' }}>{aiReview}</p>
+        )}
       </div>
 
       <div className="final-section">
@@ -78,13 +101,8 @@ function FinalReviewScreen({ finalData, metrics, decisionHistory, onRestart }) {
         ))}
       </div>
 
-      <div className="final-section">
-        <h3>{finalData.reflectionTitle}</h3>
-        <p className="outcome-text">{finalData.reflectionText}</p>
-      </div>
-
       <div className="btn-center">
-        <button className="btn-primary" onClick={onRestart}>
+        <button className="btn-primary" onClick={onRestart} disabled={loading}>
           Restart Simulation
         </button>
       </div>
