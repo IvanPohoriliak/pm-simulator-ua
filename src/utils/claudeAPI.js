@@ -27,45 +27,45 @@ export async function generateAIFeedback(weekNumber, weekTitle, optionId, option
     timelineRisk: metrics.timelineRisk - oldMetrics.timelineRisk
   };
   
-  const prompt = `You are a seasoned PM reflecting on a real project decision.
+  const prompt = `Ти досвідчений PM, який аналізує рішення в реальному проєкті.
 
-WEEK ${weekNumber}/12: "${weekTitle}"
+ТИЖДЕНЬ ${weekNumber}/12: "${weekTitle}"
 
-SITUATION:
+СИТУАЦІЯ:
 ${weekData.context}
 
-TEAM SIGNALS:
+СИГНАЛИ ВІД КОМАНДИ:
 ${signalsText}
 
-YOUR DECISION:
-Option ${optionId}: "${selectedOption.title}"
+ТВОЄ РІШЕННЯ:
+Опція ${optionId}: "${selectedOption.title}"
 → ${selectedOption.consequences.immediate}
 
-WHAT YOU DIDN'T CHOOSE:
+ЩО ТИ НЕ ОБРАВ:
 ${otherOptions}
 
-IMPACT:
-- Client Trust: ${oldMetrics.clientTrust} → ${metrics.clientTrust} (${formatDelta(deltas.clientTrust)})
-- Team Mood: ${oldMetrics.teamMood} → ${metrics.teamMood} (${formatDelta(deltas.teamMood)})
-- Tech Debt: ${oldMetrics.techDebt} → ${metrics.techDebt} (${formatDelta(deltas.techDebt)})
-- Timeline Risk: ${oldMetrics.timelineRisk} → ${metrics.timelineRisk} (${formatDelta(deltas.timelineRisk)})
+ВПЛИВ НА МЕТРИКИ:
+- Довіра клієнта: ${oldMetrics.clientTrust} → ${metrics.clientTrust} (${formatDelta(deltas.clientTrust)})
+- Настрій команди: ${oldMetrics.teamMood} → ${metrics.teamMood} (${formatDelta(deltas.teamMood)})
+- Техборг: ${oldMetrics.techDebt} → ${metrics.techDebt} (${formatDelta(deltas.techDebt)})
+- Ризик дедлайну: ${oldMetrics.timelineRisk} → ${metrics.timelineRisk} (${formatDelta(deltas.timelineRisk)})
 
-Provide grounded feedback in 2-3 paragraphs (150-200 words total):
+Напиши чесний фідбек у 2-3 абзаци (150-200 слів):
 
-1. What this decision accomplished (why it worked or didn't)
-2. What trade-off or hidden cost exists (what you gave up vs other options)
-3. One insight an experienced PM would notice at Week ${weekNumber}/12
+1. Що дало це рішення (чому спрацювало або ні)
+2. Який компроміс або прихована ціна (що віддав порівняно з іншими опціями)
+3. Один інсайт, який помітив би досвідчений PM на тижні ${weekNumber}/12
 
-Rules:
-- Reference SPECIFIC details from this week's situation
-- Compare to the options you DIDN'T choose
-- Tie to metrics changes (explain WHY mood/debt/risk changed)
-- NO generic advice ("communication is key")
-- Real, grounded, experienced PM voice
-- Speak as if you lived through this exact project
-- IMPORTANT: Write your response in UKRAINIAN language (українською мовою)
+Правила:
+- Згадуй КОНКРЕТНІ деталі з ситуації цього тижня
+- Порівнюй з опціями, які ти НЕ обрав
+- Прив'язуй до змін метрик (поясни ЧОМУ настрій/борг/ризик змінився)
+- БЕЗ загальних порад ("комунікація — це ключ")
+- Реальний, приземлений голос досвідченого PM
+- Пиши так, ніби ти сам пережив цей проєкт
+- Природна розмовна українська, як говорять PM в офісах
 
-Write naturally and honestly in Ukrainian.`;
+Пиши природно і чесно.`;
 
   try {
     const response = await fetch('/api/claude', {
@@ -123,40 +123,39 @@ export async function generateFinalReview(decisionHistory, metrics, scenarioData
     return `Week ${decision.week} (${weekData.title}): Chose Option ${decision.optionId} - ${selectedOption.title}`;
   }).join('\n');
   
-  const prompt = `You are writing the final retrospective for a 12-week PM simulation project.
+  const prompt = `Ти пишеш фінальну ретроспективу для 12-тижневого проєкту PM-симулятора.
 
-THE PROJECT:
+ПРОЄКТ:
 ${scenarioData.projectBrief.context}
 
-THE 12 DECISIONS MADE:
+12 РІШЕНЬ, ЯКІ ПРИЙНЯВ PM:
 ${decisionSummary}
 
-FINAL METRICS:
-- Client Trust: ${metrics.clientTrust}/100
-- Team Mood: ${metrics.teamMood}/100
-- Tech Debt: ${metrics.techDebt}/100 (higher = worse)
-- Timeline Risk: ${metrics.timelineRisk}/100 (higher = worse)
+ФІНАЛЬНІ МЕТРИКИ:
+- Довіра клієнта: ${metrics.clientTrust}/100
+- Настрій команди: ${metrics.teamMood}/100
+- Техборг: ${metrics.techDebt}/100 (вище = гірше)
+- Ризик дедлайну: ${metrics.timelineRisk}/100 (вище = гірше)
 
-Write a powerful, honest final reflection (300-400 words) that:
+Напиши потужну, чесну фінальну ретроспективу (300-400 слів):
 
-1. **What Happened** (100 words): Describe the project outcome based on final metrics. Did they succeed? At what cost? Be specific about the demo, funding, and what was real vs what was shown.
+1. **Що сталося** (100 слів): Опиши результат проєкту на основі фінальних метрик. Вийшло? Якою ціною? Будь конкретним про демо, фандінг, що було реальним а що показухою.
 
-2. **The Pattern** (150 words): Analyze the decision pattern across 12 weeks. What trade-offs were consistently made? How did early decisions compound into later problems? Reference specific weeks where trajectory changed.
+2. **Паттерн** (150 слів): Проаналізуй паттерн рішень протягом 12 тижнів. Які компроміси повторювалися? Як ранні рішення переросли в пізніші проблеми? Згадай конкретні тижні, де траєкторія змінилася.
 
-3. **The Reality** (100 words): The truth that doesn't go in retrospectives. What did this cost the team? What expectations are now set for the next phase? What can't be given to everyone?
+3. **Реальність** (100 слів): Правда, яка не потрапить в ретроспективу. Скільки це коштувало команді? Які очікування тепер встановлені на наступну фазу? Що неможливо дати всім?
 
-Rules:
-- Write like someone who lived through this exact project
-- Reference specific metrics to tell the story (e.g., "65 trust but 45 mood tells you...")
-- NO generic PM advice
-- NO teaching tone
-- Be honest, sometimes brutal
-- Make it personal and real
-- Use short paragraphs and punchy sentences
-- End with the uncomfortable truth
-- IMPORTANT: Write your entire response in UKRAINIAN language (українською мовою)
+Правила:
+- Пиши як хтось, хто пережив саме цей проєкт
+- Використовуй конкретні метрики для розповіді (наприклад, "65 довіри але 45 настрою каже тобі...")
+- БЕЗ загальних PM-порад
+- БЕЗ повчального тону
+- Будь чесним, інколи брутальним
+- Зроби це персональним і реальним
+- Використовуй короткі абзаци і влучні речення
+- Закінчи некомфортною правдою
 
-Do NOT use headers or markdown. Write in flowing prose, separated by blank lines between sections, in Ukrainian.`;
+НЕ використовуй заголовки чи markdown. Пиши плавною прозою, розділяй секції порожніми рядками.`;
 
   try {
     const response = await fetch('/api/claude', {
