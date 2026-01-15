@@ -63,8 +63,9 @@ Rules:
 - NO generic advice ("communication is key")
 - Real, grounded, experienced PM voice
 - Speak as if you lived through this exact project
+- IMPORTANT: Write your response in UKRAINIAN language (українською мовою)
 
-Write naturally and honestly.`;
+Write naturally and honestly in Ukrainian.`;
 
   try {
     const response = await fetch('/api/claude', {
@@ -153,8 +154,9 @@ Rules:
 - Make it personal and real
 - Use short paragraphs and punchy sentences
 - End with the uncomfortable truth
+- IMPORTANT: Write your entire response in UKRAINIAN language (українською мовою)
 
-Do NOT use headers or markdown. Write in flowing prose, separated by blank lines between sections.`;
+Do NOT use headers or markdown. Write in flowing prose, separated by blank lines between sections, in Ukrainian.`;
 
   try {
     const response = await fetch('/api/claude', {
