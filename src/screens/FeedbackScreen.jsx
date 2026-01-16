@@ -29,12 +29,12 @@ function FeedbackScreen({ weekNumber, weekTitle, selectedOption, metrics, onCont
   return (
     <div className="feedback-screen">
       <div className="feedback-content">
-        <h3>AI Feedback</h3>
+        <h3>Фідбек від AI</h3>
         
         {loading ? (
           <div className="loading-spinner">
             <div className="spinner"></div>
-            <p>Generating feedback...</p>
+            <p>Генерую фідбек...</p>
           </div>
         ) : (
           <p className="feedback-text">{feedback}</p>
@@ -47,7 +47,7 @@ function FeedbackScreen({ weekNumber, weekTitle, selectedOption, metrics, onCont
           onClick={onContinue}
           disabled={loading}
         >
-          {isLastWeek ? 'See Final Review' : `Continue to Week ${weekNumber + 1}`}
+          {isLastWeek ? 'Переглянути результати проєкту' : `Перейти до тижня ${weekNumber + 1}`}
         </button>
       </div>
     </div>

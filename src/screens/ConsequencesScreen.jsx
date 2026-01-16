@@ -9,30 +9,30 @@ function ConsequencesScreen({ consequences, onContinue }) {
   }
 
   const metrics = [
-    { label: '🔵 Client Trust', old: oldMetrics.clientTrust, new: newMetrics.clientTrust },
-    { label: '🟢 Team Mood', old: oldMetrics.teamMood, new: newMetrics.teamMood },
-    { label: '🔴 Tech Debt', old: oldMetrics.techDebt, new: newMetrics.techDebt },
-    { label: '🟠 Timeline Risk', old: oldMetrics.timelineRisk, new: newMetrics.timelineRisk }
+    { label: '🔵 Довіра клієнта', old: oldMetrics.clientTrust, new: newMetrics.clientTrust },
+    { label: '🟢 Настрій команди', old: oldMetrics.teamMood, new: newMetrics.teamMood },
+    { label: '🔴 Техборг', old: oldMetrics.techDebt, new: newMetrics.techDebt },
+    { label: '🟠 Ризик дедлайну', old: oldMetrics.timelineRisk, new: newMetrics.timelineRisk }
   ]
 
   return (
     <div className="consequences-screen">
       <div className="consequences-header">
-        <h1>Decision Made</h1>
+        <h1>Рішення прийнято</h1>
       </div>
 
       <div className="chosen-option">
-        <h3>You chose:</h3>
-        <h2>✓ Option {option.id}: {option.title}</h2>
+        <h3>Ви обрали:</h3>
+        <h2>✓ Опція {option.id}: {option.title}</h2>
       </div>
 
       <div className="outcome-section">
-        <h3>Immediate Outcome</h3>
+        <h3>Наслідки</h3>
         <p className="outcome-text">{option.consequences.immediate}</p>
       </div>
 
       <div className="metrics-changes">
-        <h3>Metrics Changed</h3>
+        <h3>Зміни метрик</h3>
         {metrics.map((metric, index) => {
           const change = getChange(metric.old, metric.new)
           return (
@@ -41,23 +41,4 @@ function ConsequencesScreen({ consequences, onContinue }) {
               <div className="change-arrow">
                 <span>{metric.old}</span>
                 <span>→</span>
-                <span>{metric.new}</span>
-                <span className={`change-value ${change.type}`}>
-                  {change.value}
-                </span>
-              </div>
-            </div>
-          )
-        })}
-      </div>
-
-      <div className="btn-center">
-        <button className="btn-primary" onClick={onContinue}>
-          See AI Feedback
-        </button>
-      </div>
-    </div>
-  )
-}
-
-export default ConsequencesScreen
+                <span>{metri

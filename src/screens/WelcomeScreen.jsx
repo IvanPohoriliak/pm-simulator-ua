@@ -2,18 +2,17 @@ function WelcomeScreen({ onStart }) {
   return (
     <div className="welcome-screen">
       <h1 className="welcome-title">
-        PM Simulator
+        PM Симулятор
         <br />
-        12 Weeks in 30 Minutes
+        12 тижнів за 30 хвилин
       </h1>
       <p className="welcome-subtitle">
-        Your decisions are irreversible. Just like real life.
+        Ваші рішення незворотні. Як у реальному житті.
       </p>
       <button className="btn-primary" onClick={onStart}>
-        Start Project
+        Почати проєкт
       </button>
     </div>
   )
 }
-
 export default WelcomeScreen
