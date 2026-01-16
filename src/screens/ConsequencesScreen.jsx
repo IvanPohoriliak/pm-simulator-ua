@@ -41,4 +41,23 @@ function ConsequencesScreen({ consequences, onContinue }) {
               <div className="change-arrow">
                 <span>{metric.old}</span>
                 <span>→</span>
-                <span>{metri
+                <span>{metric.new}</span>
+                <span className={`change-value ${change.type}`}>
+                  {change.value}
+                </span>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+
+      <div className="btn-center">
+        <button className="btn-primary" onClick={onContinue}>
+          Отримати фідбек від AI
+        </button>
+      </div>
+    </div>
+  )
+}
+
+export default ConsequencesScreen
