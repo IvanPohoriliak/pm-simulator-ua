@@ -20,7 +20,7 @@ function WeekScreen({ weekData, weekNumber, metrics, onDecision }) {
     <div className="week-screen">
       {/* Progress Bar */}
       <div className="progress-bar-container">
-        <span className="progress-text">Week {weekNumber} of 12</span>
+        <span className="progress-text">Тиждень {weekNumber} з 12</span>
         <div className="progress-bar-track">
           <div 
             className="progress-bar-fill" 
@@ -32,17 +32,17 @@ function WeekScreen({ weekData, weekNumber, metrics, onDecision }) {
 
       {/* Week Header */}
       <div className="week-header">
-        <h1 className="week-title">Week {weekNumber}: {weekData.title}</h1>
+        <h1 className="week-title">Тиждень {weekNumber}: {weekData.title}</h1>
         <p className="week-phase">{weekData.phase}</p>
       </div>
 
       {/* Metrics Dashboard */}
       <div className="metrics-dashboard">
-        <h3>Project Metrics</h3>
+        <h3>Метрики проєкту</h3>
         
         <div className="metric-item">
           <div className="metric-header">
-            <span className="metric-label">🔵 Client Trust</span>
+            <span className="metric-label">🔵 Довіра клієнта</span>
             <span className="metric-value">{metrics.clientTrust}/100</span>
           </div>
           <div className="metric-bar-track">
@@ -55,7 +55,7 @@ function WeekScreen({ weekData, weekNumber, metrics, onDecision }) {
 
         <div className="metric-item">
           <div className="metric-header">
-            <span className="metric-label">🟢 Team Mood</span>
+            <span className="metric-label">🟢 Настрій команди</span>
             <span className="metric-value">{metrics.teamMood}/100</span>
           </div>
           <div className="metric-bar-track">
@@ -68,7 +68,7 @@ function WeekScreen({ weekData, weekNumber, metrics, onDecision }) {
 
         <div className="metric-item">
           <div className="metric-header">
-            <span className="metric-label">🔴 Tech Debt</span>
+            <span className="metric-label">🔴 Техборг</span>
             <span className="metric-value">{metrics.techDebt}/100</span>
           </div>
           <div className="metric-bar-track">
@@ -81,7 +81,7 @@ function WeekScreen({ weekData, weekNumber, metrics, onDecision }) {
 
         <div className="metric-item">
           <div className="metric-header">
-            <span className="metric-label">🟠 Timeline Risk</span>
+            <span className="metric-label">🟠 Ризик дедлайну</span>
             <span className="metric-value">{metrics.timelineRisk}/100</span>
           </div>
           <div className="metric-bar-track">
@@ -95,13 +95,13 @@ function WeekScreen({ weekData, weekNumber, metrics, onDecision }) {
 
       {/* Context */}
       <div className="context-section">
-        <h3>Context</h3>
+        <h3>Контекст</h3>
         <p className="context-text">{weekData.context}</p>
       </div>
 
       {/* Signals (Slack-style messages) */}
       <div className="signals-section">
-        <h3>Incoming Signals</h3>
+        <h3>Сигнали</h3>
         {weekData.signals.map((signal, index) => (
           <div key={index} className="signal-card">
             <div className="signal-header">
@@ -116,7 +116,7 @@ function WeekScreen({ weekData, weekNumber, metrics, onDecision }) {
 
       {/* Situation */}
       <div className="situation-section">
-        <h3>⚠️ Situation Requires a Decision</h3>
+        <h3>⚠️ Ситуація вимагає рішення</h3>
         <p>{weekData.situation}</p>
       </div>
 
@@ -142,7 +142,7 @@ function WeekScreen({ weekData, weekNumber, metrics, onDecision }) {
         disabled={!selected}
         onClick={handleMakeDecision}
       >
-        Make Decision
+        Прийняти рішення
       </button>
     </div>
   )

@@ -7,28 +7,28 @@ function ProjectBriefScreen({ data, onBegin }) {
       </div>
 
       <div className="brief-section">
-        <h3>Project Context</h3>
-        <p><strong>Type:</strong> {data.type}</p>
-        <p><strong>Situation:</strong> {data.context}</p>
-        <p><strong>Deadline:</strong> {data.deadline}</p>
-        <p><strong>Budget:</strong> {data.budget}</p>
+        <h3>Контекст проєкту</h3>
+        <p><strong>Тип:</strong> {data.type}</p>
+        <p><strong>Ситуація:</strong> {data.context}</p>
+        <p><strong>Дедлайн:</strong> {data.deadline}</p>
+        <p><strong>Бюджет:</strong> {data.budget}</p>
       </div>
 
       <div className="brief-section">
-        <h3>Client</h3>
+        <h3>Клієнт</h3>
         <p><strong>{data.client.name}</strong> - {data.client.role}</p>
         <p>{data.client.description}</p>
       </div>
 
       <div className="brief-section">
-        <h3>Your Team</h3>
+        <h3>Ваша команда</h3>
         <div className="team-grid">
           {data.team.map((member, index) => (
             <div key={index} className="team-card">
               <h4>{member.name}</h4>
               <p className="team-role">{member.role}</p>
               <p className="team-personality">
-                {member.experience} experience • {member.personality}
+                {member.experience} досвіду • {member.personality}
               </p>
             </div>
           ))}
@@ -41,7 +41,7 @@ function ProjectBriefScreen({ data, onBegin }) {
 
       <div className="btn-center">
         <button className="btn-primary" onClick={onBegin}>
-          Begin Week 1
+          Почати Тиждень 1
         </button>
       </div>
     </div>
