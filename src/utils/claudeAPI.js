@@ -1,82 +1,58 @@
-// Claude API Integration for PM Simulator
+// Streaming AI Feedback - Ukrainian Version
 
-export async function generateAIFeedback(weekNumber, weekTitle, optionId, optionTitle, metrics, weekData, selectedOption, oldMetrics) {
-  
-  // Format team signals
-  const signalsText = weekData.signals
-    .map(s => `- ${s.from}: "${s.message}"`)
-    .join('\n');
-  
-  // Format other options (ones NOT chosen)
-  const otherOptions = weekData.options
-    .filter(opt => opt.id !== optionId)
-    .map(opt => `${opt.id}) ${opt.title}\n   → ${opt.consequences.immediate}`)
-    .join('\n\n');
-  
-  // Calculate deltas
-  const formatDelta = (value) => {
-    if (value > 0) return `+${value}`;
-    if (value < 0) return `${value}`;
-    return '0';
-  };
-  
-  const deltas = {
-    clientTrust: metrics.clientTrust - oldMetrics.clientTrust,
-    teamMood: metrics.teamMood - oldMetrics.teamMood,
-    techDebt: metrics.techDebt - oldMetrics.techDebt,
-    timelineRisk: metrics.timelineRisk - oldMetrics.timelineRisk
-  };
-  
-  const prompt = `Ти досвідчений PM, який аналізує рішення в реальному проєкті.
+export async function generateAIFeedback(
+  weekNumber,
+  weekTitle,
+  optionId,
+  optionTitle,
+  newMetrics,
+  weekData,
+  selectedOption,
+  oldMetrics,
+  onChunk // 👈 NEW: callback для streaming
+) {
+  const context = `
+Тиждень ${weekNumber}: ${weekTitle}
+Фаза: ${weekData.phase}
 
-ТИЖДЕНЬ ${weekNumber}/12: "${weekTitle}"
-
-СИТУАЦІЯ:
+Контекст:
 ${weekData.context}
 
-СИГНАЛИ ВІД КОМАНДИ:
-${signalsText}
+Обране рішення: Опція ${optionId} - ${optionTitle}
+${selectedOption.description}
 
-ТВОЄ РІШЕННЯ:
-Опція ${optionId}: "${selectedOption.title}"
-→ ${selectedOption.consequences.immediate}
+Наслідки:
+${selectedOption.consequences.immediate}
 
-ЩО ТИ НЕ ОБРАВ:
-${otherOptions}
+Зміни метрик:
+- Довіра клієнта: ${oldMetrics.clientTrust} → ${newMetrics.clientTrust} (${newMetrics.clientTrust - oldMetrics.clientTrust > 0 ? '+' : ''}${newMetrics.clientTrust - oldMetrics.clientTrust})
+- Настрій команди: ${oldMetrics.teamMood} → ${newMetrics.teamMood} (${newMetrics.teamMood - oldMetrics.teamMood > 0 ? '+' : ''}${newMetrics.teamMood - oldMetrics.teamMood})
+- Техборг: ${oldMetrics.techDebt} → ${newMetrics.techDebt} (${newMetrics.techDebt - oldMetrics.techDebt > 0 ? '+' : ''}${newMetrics.techDebt - oldMetrics.techDebt})
+- Ризик дедлайну: ${oldMetrics.timelineRisk} → ${newMetrics.timelineRisk} (${newMetrics.timelineRisk - oldMetrics.timelineRisk > 0 ? '+' : ''}${newMetrics.timelineRisk - oldMetrics.timelineRisk})
+`;
 
-ВПЛИВ НА МЕТРИКИ:
-- Довіра клієнта: ${oldMetrics.clientTrust} → ${metrics.clientTrust} (${formatDelta(deltas.clientTrust)})
-- Настрій команди: ${oldMetrics.teamMood} → ${metrics.teamMood} (${formatDelta(deltas.teamMood)})
-- Техборг: ${oldMetrics.techDebt} → ${metrics.techDebt} (${formatDelta(deltas.techDebt)})
-- Ризик дедлайну: ${oldMetrics.timelineRisk} → ${metrics.timelineRisk} (${formatDelta(deltas.timelineRisk)})
+  const prompt = `Ти досвідчений PM, який аналізує рішення іншого PM.
 
-Напиши чесний фідбек у 2-3 абзаци (150-200 слів):
+${context}
 
+Напиши короткий фідбек (3-4 речення) українською мовою:
 1. Що дало це рішення (чому спрацювало або ні)
-2. Який компроміс або прихована ціна (що віддав порівняно з іншими опціями)
-3. Один інсайт, який помітив би досвідчений PM на тижні ${weekNumber}/12
+2. Які trade-offs були зроблені
+3. Що варто врахувати далі
 
-Правила:
-- Згадуй КОНКРЕТНІ деталі з ситуації цього тижня
-- Порівнюй з опціями, які ти НЕ обрав
-- Прив'язуй до змін метрик (поясни ЧОМУ настрій/борг/ризик змінився)
-- БЕЗ загальних порад ("комунікація — це ключ")
-- Реальний, приземлений голос досвідченого PM
-- Пиши так, ніби ти сам пережив цей проєкт
-- Природна розмовна українська, як говорять PM в офісах
-
-Пиши природно і чесно.`;
+Природна розмовна українська, як говорять PM в офісах. Без формальностей.`;
 
   try {
-    const response = await fetch('/api/claude', {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
-        max_tokens: 500,
-        temperature: 0.7,
+        max_tokens: 1000,
+        stream: true, // 👈 STREAMING ENABLED
         messages: [
           {
             role: 'user',
@@ -87,86 +63,98 @@ ${otherOptions}
     });
 
     if (!response.ok) {
-      console.error('Claude API error:', response.status);
-      return getFallbackFeedback(weekNumber);
+      throw new Error(`API error: ${response.status}`);
     }
 
-    const data = await response.json();
-    return data.content[0].text;
+    // Read streaming response
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let fullText = '';
+
+    while (true) {
+      const { done, value } = await reader.read();
+      
+      if (done) break;
+
+      const chunk = decoder.decode(value, { stream: true });
+      const lines = chunk.split('\n');
+
+      for (const line of lines) {
+        if (line.startsWith('data: ')) {
+          const data = line.slice(6);
+          
+          if (data === '[DONE]') continue;
+
+          try {
+            const parsed = JSON.parse(data);
+            
+            if (parsed.type === 'content_block_delta') {
+              const text = parsed.delta?.text || '';
+              fullText += text;
+              
+              // 👇 STREAMING: send each chunk to UI
+              if (onChunk) {
+                onChunk(fullText);
+              }
+            }
+          } catch (e) {
+            // Skip invalid JSON
+          }
+        }
+      }
+    }
+
+    return fullText || 'Фідбек тимчасово недоступний';
     
   } catch (error) {
-    console.error('Claude API Error:', error);
-    return getFallbackFeedback(weekNumber);
+    console.error('AI Feedback error:', error);
+    return 'Помилка генерації фідбеку. Спробуйте ще раз.';
   }
 }
 
-// Fallback feedback when API unavailable
-function getFallbackFeedback(weekNumber) {
-  const fallbacks = [
-    `This decision moved the project forward, but like all choices, it came with trade-offs.\n\nThe immediate benefit was clear, but you've created some downstream effects that will compound over the coming weeks. Every "yes" to speed is a "no" to something else — usually stability or team capacity.\n\nAn experienced PM would weigh whether this trade-off aligns with what matters most at Week ${weekNumber} of 12. Sometimes the right decision still hurts.`,
-    
-    `You made a call under pressure. That's the job.\n\nThe team will feel the impact of this choice differently than the client will. What looks like progress on one front often creates friction on another. The key isn't avoiding trade-offs — it's being honest about which ones you're making.\n\nAt Week ${weekNumber}, you're building momentum. But momentum has mass, and changing direction gets harder the further you go.`,
-    
-    `In the moment, this probably felt like the only reasonable choice. And maybe it was.\n\nBut reasonable decisions still have consequences. The team's capacity isn't infinite. Tech debt isn't just code — it's all the shortcuts and compromises that seem fine today but compound tomorrow.\n\nYou're managing multiple truths at once: what the client needs, what the team can sustain, what the timeline demands. Week ${weekNumber} is when these truths start to conflict.`
-  ];
-  
-  return fallbacks[weekNumber % fallbacks.length];
-}
+export async function generateFinalReview(
+  decisionHistory,
+  finalMetrics,
+  scenarioData,
+  onChunk // 👈 STREAMING для final review
+) {
+  const decisions = decisionHistory
+    .map((d) => `Week ${d.week}: ${d.title}`)
+    .join('\n');
 
-// Generate AI-powered Final Review based on all decisions
-export async function generateFinalReview(decisionHistory, metrics, scenarioData) {
-  
-  // Build decision summary
-  const decisionSummary = decisionHistory.map((decision, index) => {
-    const weekData = scenarioData.weeks[decision.week - 1];
-    const selectedOption = weekData.options.find(opt => opt.id === decision.optionId);
-    return `Week ${decision.week} (${weekData.title}): Chose Option ${decision.optionId} - ${selectedOption.title}`;
-  }).join('\n');
-  
-  const prompt = `Ти пишеш фінальну ретроспективу для 12-тижневого проєкту PM-симулятора.
+  const prompt = `Ти досвідчений PM, який аналізує 12-тижневий проєкт.
 
-ПРОЄКТ:
-${scenarioData.projectBrief.context}
+Проєкт: ${scenarioData.projectBrief.name}
+Контекст: ${scenarioData.projectBrief.context}
 
-12 РІШЕНЬ, ЯКІ ПРИЙНЯВ PM:
-${decisionSummary}
+Прийняті рішення:
+${decisions}
 
-ФІНАЛЬНІ МЕТРИКИ:
-- Довіра клієнта: ${metrics.clientTrust}/100
-- Настрій команди: ${metrics.teamMood}/100
-- Техборг: ${metrics.techDebt}/100 (вище = гірше)
-- Ризик дедлайну: ${metrics.timelineRisk}/100 (вище = гірше)
+Фінальні метрики:
+- Довіра клієнта: ${finalMetrics.clientTrust}/100
+- Настрій команди: ${finalMetrics.teamMood}/100
+- Техборг: ${finalMetrics.techDebt}/100
+- Ризик дедлайну: ${finalMetrics.timelineRisk}/100
 
-Напиши потужну, чесну фінальну ретроспективу (300-400 слів):
+Напиши фінальний огляд (5-7 речень) українською:
+1. Що сталося з проєктом
+2. Як команда себе почуває
+3. Що вийшло добре, що ні
+4. Головний урок з цього проєкту
 
-1. **Що сталося** (100 слів): Опиши результат проєкту на основі фінальних метрик. Вийшло? Якою ціною? Будь конкретним про демо, фандінг, що було реальним а що показухою.
-
-2. **Паттерн** (150 слів): Проаналізуй паттерн рішень протягом 12 тижнів. Які компроміси повторювалися? Як ранні рішення переросли в пізніші проблеми? Згадай конкретні тижні, де траєкторія змінилася.
-
-3. **Реальність** (100 слів): Правда, яка не потрапить в ретроспективу. Скільки це коштувало команді? Які очікування тепер встановлені на наступну фазу? Що неможливо дати всім?
-
-Правила:
-- Пиши як хтось, хто пережив саме цей проєкт
-- Використовуй конкретні метрики для розповіді (наприклад, "65 довіри але 45 настрою каже тобі...")
-- БЕЗ загальних PM-порад
-- БЕЗ повчального тону
-- Будь чесним, інколи брутальним
-- Зроби це персональним і реальним
-- Використовуй короткі абзаци і влучні речення
-- Закінчи некомфортною правдою
-
-НЕ використовуй заголовки чи markdown. Пиши плавною прозою, розділяй секції порожніми рядками.`;
+Природна розмовна українська. Чесно, без прикрас.`;
 
   try {
-    const response = await fetch('/api/claude', {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
-        max_tokens: 800,
-        temperature: 0.8,
+        max_tokens: 1500,
+        stream: true, // 👈 STREAMING
         messages: [
           {
             role: 'user',
@@ -177,36 +165,49 @@ ${decisionSummary}
     });
 
     if (!response.ok) {
-      console.error('Claude API error:', response.status);
-      return getFallbackFinalReview();
+      throw new Error(`API error: ${response.status}`);
     }
 
-    const data = await response.json();
-    return data.content[0].text;
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let fullText = '';
+
+    while (true) {
+      const { done, value } = await reader.read();
+      
+      if (done) break;
+
+      const chunk = decoder.decode(value, { stream: true });
+      const lines = chunk.split('\n');
+
+      for (const line of lines) {
+        if (line.startsWith('data: ')) {
+          const data = line.slice(6);
+          
+          if (data === '[DONE]') continue;
+
+          try {
+            const parsed = JSON.parse(data);
+            
+            if (parsed.type === 'content_block_delta') {
+              const text = parsed.delta?.text || '';
+              fullText += text;
+              
+              if (onChunk) {
+                onChunk(fullText);
+              }
+            }
+          } catch (e) {
+            // Skip invalid JSON
+          }
+        }
+      }
+    }
+
+    return fullText || 'Фінальний огляд тимчасово недоступний';
     
   } catch (error) {
-    console.error('Claude API Error:', error);
-    return getFallbackFinalReview();
+    console.error('Final Review error:', error);
+    return 'Помилка генерації фінального огляду.';
   }
-}
-
-// Fallback final review when API unavailable
-function getFallbackFinalReview() {
-  return `The MVP launched. The demo worked. Series B funding secured.
-
-But the product you showed wasn't the product in production. You demonstrated core flows under controlled conditions. Investors saw potential, not reality.
-
-The team delivered the impossible. They worked nights. They skipped quality steps. They built workarounds instead of solutions. They said yes when they meant "maybe if we're lucky."
-
-The hidden cost: technical debt that will take 3 months to unwind. A team that trusts you but is exhausted. A codebase that works but nobody fully understands anymore. A founder who thinks you can do this again, faster.
-
-You didn't fail. But you didn't win cleanly either.
-
-You made twelve decisions. Most were reasonable in isolation. But decisions compound. Each trade-off borrowed from the future. Each "yes" to speed was a "no" to stability.
-
-The team doesn't blame you. They delivered what you asked. They trust you. But trust is a resource too. And you've spent it.
-
-Next phase starts Monday. David expects acceleration. The team expects rest. The codebase expects refactoring. You can't give everyone what they need.
-
-And that's the truth nobody puts in the retrospective.`;
 }

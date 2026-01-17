@@ -4,14 +4,28 @@ import { generateFinalReview } from '../utils/claudeAPI'
 function FinalReviewScreen({ finalData, metrics, decisionHistory, scenarioData, onRestart }) {
   const [aiReview, setAiReview] = useState('')
   const [loading, setLoading] = useState(true)
+  const [isStreaming, setIsStreaming] = useState(false)
 
   useEffect(() => {
     async function loadFinalReview() {
       setLoading(true)
-      const review = await generateFinalReview(decisionHistory, metrics, scenarioData)
-      setAiReview(review)
-      setLoading(false)
+      setIsStreaming(true)
+      
+      // 👇 STREAMING: update review as it arrives
+      await generateFinalReview(
+        decisionHistory,
+        metrics,
+        scenarioData,
+        (chunk) => {
+          // This callback is called for each chunk of text
+          setAiReview(chunk)
+          setLoading(false) // Stop showing spinner after first chunk
+        }
+      )
+      
+      setIsStreaming(false)
     }
+    
     loadFinalReview()
   }, [decisionHistory, metrics, scenarioData])
 
@@ -24,13 +38,22 @@ function FinalReviewScreen({ finalData, metrics, decisionHistory, scenarioData, 
 
       <div className="final-section">
         <h3>Що сталося</h3>
-        {loading ? (
+        {loading && aiReview === '' ? (
           <div className="loading-spinner">
             <div className="spinner"></div>
             <p>Формую підсумки проєкту...</p>
           </div>
         ) : (
-          <p className="outcome-text" style={{ whiteSpace: 'pre-line' }}>{aiReview}</p>
+          <>
+            <p className="outcome-text" style={{ whiteSpace: 'pre-line' }}>
+              {aiReview}
+            </p>
+            
+            {/* Show "typing" indicator while streaming */}
+            {isStreaming && (
+              <span className="typing-indicator">▋</span>
+            )}
+          </>
         )}
       </div>
 
@@ -102,7 +125,11 @@ function FinalReviewScreen({ finalData, metrics, decisionHistory, scenarioData, 
       </div>
 
       <div className="btn-center">
-        <button className="btn-primary" onClick={onRestart} disabled={loading}>
+        <button 
+          className="btn-primary" 
+          onClick={onRestart} 
+          disabled={loading && aiReview === ''}
+        >
           Почати спочатку
         </button>
       </div>
