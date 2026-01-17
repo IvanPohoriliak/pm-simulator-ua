@@ -1,4 +1,4 @@
-// Streaming AI Feedback - Ukrainian Version
+// utils/claudeAPI.js - Updated to use Vercel proxy
 
 export async function generateAIFeedback(
   weekNumber,
@@ -9,7 +9,7 @@ export async function generateAIFeedback(
   weekData,
   selectedOption,
   oldMetrics,
-  onChunk // 👈 NEW: callback для streaming
+  onChunk
 ) {
   const context = `
 Тиждень ${weekNumber}: ${weekTitle}
@@ -43,22 +43,21 @@ ${context}
 Природна розмовна українська, як говорять PM в офісах. Без формальностей.`;
 
   try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
+    // 👇 USE VERCEL PROXY instead of direct API call
+    const response = await fetch('/api/claude', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        stream: true, // 👈 STREAMING ENABLED
         messages: [
           {
             role: 'user',
             content: prompt
           }
-        ]
+        ],
+        max_tokens: 1000,
+        stream: true
       })
     });
 
@@ -66,7 +65,6 @@ ${context}
       throw new Error(`API error: ${response.status}`);
     }
 
-    // Read streaming response
     const reader = response.body.getReader();
     const decoder = new TextDecoder();
     let fullText = '';
@@ -92,7 +90,6 @@ ${context}
               const text = parsed.delta?.text || '';
               fullText += text;
               
-              // 👇 STREAMING: send each chunk to UI
               if (onChunk) {
                 onChunk(fullText);
               }
@@ -116,7 +113,7 @@ export async function generateFinalReview(
   decisionHistory,
   finalMetrics,
   scenarioData,
-  onChunk // 👈 STREAMING для final review
+  onChunk
 ) {
   const decisions = decisionHistory
     .map((d) => `Week ${d.week}: ${d.title}`)
@@ -145,22 +142,20 @@ ${decisions}
 Природна розмовна українська. Чесно, без прикрас.`;
 
   try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
+    const response = await fetch('/api/claude', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1500,
-        stream: true, // 👈 STREAMING
         messages: [
           {
             role: 'user',
             content: prompt
           }
-        ]
+        ],
+        max_tokens: 1500,
+        stream: true
       })
     });
 

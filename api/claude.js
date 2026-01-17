@@ -1,46 +1,54 @@
-// Vercel Serverless Function - Claude API Proxy
-// This proxies requests from frontend to Claude API to avoid CORS issues
-
+// api/claude.js
 export default async function handler(req, res) {
-  // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  // Get API key from environment variable
-  const CLAUDE_API_KEY = process.env.VITE_CLAUDE_API_KEY;
-
-  if (!CLAUDE_API_KEY) {
-    console.error('VITE_CLAUDE_API_KEY not found in environment variables');
-    return res.status(500).json({ error: 'API key not configured' });
-  }
-
   try {
-    // Forward request to Claude API
+    const { messages, max_tokens, stream } = req.body;
+
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': CLAUDE_API_KEY,
+        'x-api-key': process.env.VITE_CLAUDE_API_KEY, // 👈 ТВІЙ KEY
         'anthropic-version': '2023-06-01'
       },
-      body: JSON.stringify(req.body)
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: max_tokens || 1000,
+        stream: stream || false,
+        messages
+      })
     });
 
-    const data = await response.json();
-    
     if (!response.ok) {
-      console.error('Claude API error:', response.status, data);
-      return res.status(response.status).json(data);
+      const error = await response.text();
+      return res.status(response.status).json({ error });
     }
 
-    return res.status(200).json(data);
-    
+    if (stream) {
+      res.setHeader('Content-Type', 'text/event-stream');
+      res.setHeader('Cache-Control', 'no-cache');
+      res.setHeader('Connection', 'keep-alive');
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        res.write(decoder.decode(value));
+      }
+
+      res.end();
+    } else {
+      const data = await response.json();
+      res.status(200).json(data);
+    }
+
   } catch (error) {
-    console.error('Proxy error:', error);
-    return res.status(500).json({ 
-      error: 'Internal server error',
-      message: error.message 
-    });
+    console.error('API error:', error);
+    res.status(500).json({ error: error.message });
   }
 }
